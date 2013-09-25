@@ -3,6 +3,7 @@
 //a DeckHand class, and a Card class. These two classes are then
 //used and tested in the program4 class
 
+import java.util.*; //For Random and Scanner
 
 public class program4 {
 
