@@ -8,7 +8,19 @@ import java.util.*; //For Random and Scanner
 public class program4 {
 
     public static void main(String[] args) {
+        DeckHand fullDeck = new DeckHand();
+        fillDeck(fullDeck);
+        System.out.println(fullDeck);
+        DeckHand emptyDeck = new DeckHand();
+    }
 
+    public static void fillDeck(DeckHand fullDeck) {
+        int currentCard = 0;
+        for (int i = 1; i < 14; i++) {
+            for (int j = 1; j < 5; j++) {
+                fullDeck.pushCard(new Card(i, j));
+            }
+        }
     }
 }
 
@@ -165,6 +177,10 @@ class DeckHand {
             }
         }
         return currentDeck;
+    }
+
+    public int length() {
+        return deck.length;
     }
 
 }
