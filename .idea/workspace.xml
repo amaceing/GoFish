@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1740a950-d420-4757-becb-3a8c91f93616" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/program4.java" afterPath="$PROJECT_DIR$/src/program4.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Prog4.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1380163618111" ignored="false" />
+    <file path="/Dummy.txt" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1380164224766" ignored="false" />
     <file path="/program4.java" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1380164013311" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -348,7 +347,11 @@
       <created>1380089392013</created>
       <updated>1380089392013</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="changed static strings to static array of strings in fave/suit values">
+      <created>1380164233108</created>
+      <updated>1380164233108</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -419,7 +422,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented card class and main" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed static strings to static array of strings in fave/suit values" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -436,6 +439,7 @@
     <MESSAGE value="description of prog added" />
     <MESSAGE value="imported java.util" />
     <MESSAGE value="implemented card class and main" />
+    <MESSAGE value="changed static strings to static array of strings in fave/suit values" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
