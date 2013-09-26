@@ -20,10 +20,8 @@ public class program4 {
         deck2.pushCard(card3);
         deck2.pushCard(card4);
         System.out.println(deck2);
-        System.out.println(deck1.popCard(12));
-
-
-
+        System.out.println(deck1.getSize());
+        System.out.println(deck2.getSize());
     }
 }
 
@@ -124,6 +122,10 @@ class DeckHand {
         deck = new Card[CARDS];
     }
 
+    public int getSize() {
+        return cardCount;
+    }
+
     public void pushCard(Card card) {
         if (cardCount == deck.length) {
             Card[] temp = new Card[deck.length * 2];
@@ -140,6 +142,7 @@ class DeckHand {
         Card found = new Card(1, 1);
         for (int i = 0; i < deck.length; i++) {
             if (faceValue == deck[i].getFaceValue()) {
+                System.out.println(deck[i]);
                 found = deck[i];
             }
         }
