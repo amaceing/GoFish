@@ -14,7 +14,7 @@ public class program4 {
         System.out.println(card2);
         System.out.println(card1.getFaceValue());
         System.out.println(card2.getSuitValue());
-        Deck deck1 = new Deck();
+        DeckHand deck1 = new DeckHand();
         deck1.pushCard(card1);
         deck1.pushCard(card2);
         System.out.println(deck1);
@@ -106,7 +106,7 @@ class Card {
     }
 }
 
-class Deck {
+class DeckHand {
 
     private static final int SUIT_COUNT = 4;
     private static final int FACE_COUNT = 13;
@@ -114,7 +114,7 @@ class Deck {
     private int cardCount;
     private Card[] deck;
 
-    public Deck() {
+    public DeckHand() {
         cardCount = 0;
         deck = new Card[CARDS];
     }
