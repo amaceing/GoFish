@@ -8,30 +8,7 @@ import java.util.*; //For Random and Scanner
 public class program4 {
 
     public static void main(String[] args) {
-        Card card1 = new Card(1, 2);
-        Card card2 = new Card(12, 3);
-        Card card3 = new Card(1, 4);
-        Card card4 = new Card(8, 1);
-        Card card5 = new Card(1, 2);
-        Card card6 = new Card(8, 4);
-        DeckHand deck1 = new DeckHand();
-        deck1.pushCard(card1);
-        deck1.pushCard(card2);
-        deck1.pushCard(card5);
-        System.out.println(deck1);
-        DeckHand deck2 = new DeckHand();
-        deck2.pushCard(card3);
-        deck2.pushCard(card4);
-        deck2.pushCard(card6);
-        System.out.println(deck2);
-        System.out.println(deck1.getSize());
-        System.out.println(deck2.getSize());
-        System.out.println(deck1.count(1));
-        System.out.println(deck2.count(8));
-        System.out.println(deck1.popCard(1));
-        System.out.println(deck2.popCard(8));
-        System.out.println(deck1.getSize());
-        System.out.println(deck2.getSize());
+
     }
 }
 
