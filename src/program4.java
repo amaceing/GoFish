@@ -10,14 +10,19 @@ public class program4 {
     public static void main(String[] args) {
         Card card1 = new Card(1, 2);
         Card card2 = new Card(12, 3);
-        System.out.println(card1);
-        System.out.println(card2);
-        System.out.println(card1.getFaceValue());
-        System.out.println(card2.getSuitValue());
+        Card card3 = new Card(6, 4);
+        Card card4 = new Card(8, 1);
         DeckHand deck1 = new DeckHand();
         deck1.pushCard(card1);
         deck1.pushCard(card2);
         System.out.println(deck1);
+        DeckHand deck2 = new DeckHand();
+        deck2.pushCard(card3);
+        deck2.pushCard(card4);
+        System.out.println(deck2);
+        System.out.println(deck1.popCard(12));
+
+
 
     }
 }
@@ -129,6 +134,16 @@ class DeckHand {
         }
         deck[cardCount] = card;
         cardCount++;
+    }
+
+    public Card popCard(int faceValue) {
+        Card found = new Card(1, 1);
+        for (int i = 0; i < deck.length; i++) {
+            if (faceValue == deck[i].getFaceValue()) {
+                found = deck[i];
+            }
+        }
+        return found;
     }
 
     public String toString() {
