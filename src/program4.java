@@ -15,7 +15,9 @@ public class program4 {
         System.out.println(card1.getFaceValue());
         System.out.println(card2.getSuitValue());
         Deck deck1 = new Deck();
-        System.out.println(deck1.length);
+        deck1.pushCard(card1);
+        deck1.pushCard(card2);
+        System.out.println(deck1);
 
     }
 }
@@ -127,6 +129,16 @@ class Deck {
         }
         deck[cardCount] = card;
         cardCount++;
+    }
+
+    public String toString() {
+        String currentDeck = "";
+        for (int i = 0; i < deck.length; i++) {
+            if (deck[i] != null) {
+                currentDeck += deck[i] + "\n";
+            }
+        }
+        return currentDeck;
     }
 
 }
