@@ -7,20 +7,118 @@ import java.util.*; //For Random and Scanner
 
 public class program4 {
 
+    public static Scanner console = new Scanner(System.in);
+
     public static void main(String[] args) {
-        DeckHand fullDeck = new DeckHand();
-        fillDeck(fullDeck);
-        System.out.println(fullDeck);
-        DeckHand emptyDeck = new DeckHand();
+        int b = 0;
+        int deckChoice = 0;
+        printIntro();
+        System.out.println();
+        DeckHand deck1 = new DeckHand();
+        fillDeck(deck1);
+        DeckHand deck2 = new DeckHand();
+        do {
+            System.out.println();
+            b = menu();
+            System.out.println();
+            if (b != 7) {
+                System.out.print("Would you like to use the full or empty deck? \n" +
+                              "Enter 1 for the full deck and 2 for the empty deck: ");
+                deckChoice = console.nextInt();
+                System.out.println();
+            }
+            if (b == 1) {
+                if (deckChoice == 1) {
+                    if (deckFull(deck1)) {
+                        System.out.println("This deck is full, you cannot insert another card");
+                    } else {
+                        insertCard(deck1);
+                    }
+                } else if (deckChoice == 2) {
+                    if (deckFull(deck2)) {
+                        System.out.println("This deck is full, you cannot insert another card");
+                    } else {
+                        insertCard(deck2);
+                    }
+                }
+            } else if (b == 2) {
+                if (deckChoice == 1) {
+                    if (!deckFull(deck1)) {
+                        System.out.println("This deck is empty, you cannot delete a card");
+                    } else {
+                        deleteCard(deck1);
+                    }
+                } else if (deckChoice == 2) {
+                    if (!deckFull(deck2)) {
+                        System.out.println("This deck is empty, you cannot delete a card");
+                    } else {
+                        deleteCard(deck2);
+                    }
+                }
+            }
+        } while (b != 7);
+        System.out.println(deck1);
+        System.out.println(deck2);
+        quitProg();
+    }
+
+    public static void printIntro() {
+        System.out.println("This program is designed to use and manipulate \n" +
+                            "decks of cards. You will be able to perform various \n" +
+                            "actions with the decks of cards. These actions will be" +
+                            "described in the menu");
+    }
+
+    public static int menu() {
+        int choice = 0;
+        System.out.println("Choose a task number from the following:");
+        System.out.println("       1 - Insert a card in the Deck");
+        System.out.println("       2 - Delete one instance of a Card in the Deck");
+        System.out.print("Insert menu option: ");
+        choice = console.nextInt();
+        while (choice < 1 || choice > 7) {
+            System.out.print("Enter a number between 1 and 7: ");
+            choice = console.nextInt();
+            System.out.println();
+        }
+        return choice;
     }
 
     public static void fillDeck(DeckHand fullDeck) {
-        int currentCard = 0;
-        for (int i = 1; i < 14; i++) {
-            for (int j = 1; j < 5; j++) {
+        for (int i = 1; i <= 13; i++) {
+            for (int j = 1; j <= 4; j++) {
                 fullDeck.pushCard(new Card(i, j));
             }
         }
+    }
+
+    public static void insertCard(DeckHand deck) {
+        int face = 0;
+        int suit = 0;
+        System.out.print("Card's face value (1 - 13): ");
+        face = console.nextInt();
+        System.out.print("Card's suit value (1 - 4): ");
+        suit = console.nextInt();
+        deck.pushCard(new Card(face, suit));
+        System.out.println();
+        System.out.println("The card with face value " + face + " and suit value " + suit + "\n" +
+                "was inserted.");
+    }
+
+    public static void deleteCard(DeckHand deck) {
+        int face = 0;
+        System.out.print("Card's face value: ");
+        face = console.nextInt();
+        deck.popCard(face);
+        System.out.print("A card with face value " + face + "was deleted");
+    }
+
+    public static boolean deckFull(DeckHand deck) {
+        return (deck.getSize() == 52);
+    }
+
+    public static void quitProg() {
+        System.out.println("You have quit the program");
     }
 }
 
@@ -111,8 +209,6 @@ class Card {
 
 class DeckHand {
 
-    private static final int SUIT_COUNT = 4;
-    private static final int FACE_COUNT = 13;
     private static final int CARDS = 52;
     private int cardCount;
     private Card[] deck;
