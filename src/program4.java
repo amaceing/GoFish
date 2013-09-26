@@ -169,7 +169,7 @@ class DeckHand {
     //Returns one instance of a Card with given value
     //From DeckHand
     public Card popCard(int faceValue) {
-        Card found = new Card(1, 1);
+        Card found = null;
         for (int i = 0; i < cardCount; i++) {
             if (faceValue == deck[i].getFaceValue()) {
                 found = deck[i];
