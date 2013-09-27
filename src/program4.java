@@ -113,7 +113,7 @@ public class program4 {
         System.out.print("Card's face value: ");
         face = console.nextInt();
         deck.popCard(face);
-        System.out.print("A card with face value " + face + " was deleted");
+        System.out.println("A card with face value " + face + " was deleted");
     }
 
     public static void count(DeckHand deck) {
@@ -244,9 +244,9 @@ class DeckHand {
     //array and copies contents from old array if
     //expansion is needed
     public void pushCard(Card card) {
-        if (cardCount == deck.length) {
-            Card[] temp = new Card[deck.length * 2];
-            for (int i = 0; i < temp.length; i++) {
+        if (cardCount >= deck.length) {
+            Card[] temp = new Card[deck.length + 2];
+            for (int i = 0; i < cardCount; i++) {
                 temp[i] = deck[i];
             }
             deck = temp;
@@ -279,12 +279,12 @@ class DeckHand {
                 foundIt = true;
                 if (cardCount > 1) {
                     deck[i] = deck[cardCount - 1];
-                    deck[cardCount - 1] = null;
                 } else {
                     deck[i] = null;
                 }
             }
         }
+        deck[cardCount - 1] = null;
         cardCount--;
         return found;
     }
@@ -292,7 +292,7 @@ class DeckHand {
     //Prints out entire deck
     public String toString() {
         String currentDeck = "";
-        for (int i = 0; i < deck.length; i++) {
+        for (int i = 0; i < cardCount; i++) {
             if (deck[i] != null) {
                 currentDeck += deck[i] + "\n";
             }
