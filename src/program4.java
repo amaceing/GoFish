@@ -28,30 +28,38 @@ public class program4 {
                 System.out.println();
             }
             if (b == 1) {
+                System.out.println("A new, empty deck will replace the current" +
+                                    " deck contents.");
+                if (deckChoice == 1) {
+                    deck1 = new DeckHand();
+                } else if (deckChoice == 2) {
+                    deck2 = new DeckHand();
+                }
+            } else if (b == 2) {
                 if (deckChoice == 1) {
                     insertCard(deck1);
                 } else if (deckChoice == 2) {
                     insertCard(deck2);
                 }
-            } else if (b == 2) {
+            } else if (b == 3) {
                 if (deckChoice == 1) {
                     deleteCard(deck1);
                 } else if (deckChoice == 2) {
                     deleteCard(deck2);
                 }
-            } else if (b == 3) {
+            } else if (b == 4) {
                 if (deckChoice == 1) {
                     count(deck1);
                 } else if (deckChoice == 2) {
                     count(deck2);
                 }
-            } else if (b == 4) {
+            } else if (b == 5) {
                 if (deckChoice == 1) {
                     size(deck1);
                 } else if (deckChoice == 2) {
                     size(deck2);
                 }
-            } else if (b == 5) {
+            } else if (b == 6) {
                 if (deckChoice == 1) {
                     printDeck(deck1);
                 } else if (deckChoice == 2) {
@@ -72,11 +80,12 @@ public class program4 {
     public static int menu() {
         int choice = 0;
         System.out.println("Choose a task number from the following:");
-        System.out.println("       1 - Insert a card in the Deck");
-        System.out.println("       2 - Delete one instance of a Card in the Deck");
-        System.out.println("       3 - Print the number of times a value occurs in Deck");
-        System.out.println("       4 - Print the size of the Deck");
-        System.out.println("       5 - Print the entire Deck");
+        System.out.println("       1 - Create a new, empty deck");
+        System.out.println("       2 - Insert a card in the Deck");
+        System.out.println("       3 - Delete one instance of a Card in the Deck");
+        System.out.println("       4 - Print the number of times a value occurs in Deck");
+        System.out.println("       5 - Print the size of the Deck");
+        System.out.println("       6 - Print the entire Deck");
         System.out.print("Insert menu option: ");
         choice = console.nextInt();
         while (choice < 1 || choice > 7) {
@@ -104,16 +113,23 @@ public class program4 {
         suit = console.nextInt();
         deck.pushCard(new Card(face, suit));
         System.out.println();
-        System.out.println("The card with face value " + face + " and suit value " + suit + "\n" +
-                "was inserted.");
+        System.out.println("The card with face value " + face + " and suit value " + suit +
+                            "\n" + "was inserted.");
     }
 
     public static void deleteCard(DeckHand deck) {
         int face = 0;
+        int count = 0;
         System.out.print("Card's face value: ");
         face = console.nextInt();
-        deck.popCard(face);
-        System.out.println("A card with face value " + face + " was deleted");
+        count = deck.count(face);
+        if (count != 0) {
+            deck.popCard(face);
+            System.out.println("A card with face value " + face + " was deleted");
+        } else {
+            System.out.println("No card with face value " + face +
+                                " was found");
+        }
     }
 
     public static void count(DeckHand deck) {
@@ -122,7 +138,7 @@ public class program4 {
         System.out.print("Enter value to count: ");
         value = console.nextInt();
         count = deck.count(value);
-        System.out.println(count);
+        System.out.println("The value " + value + " occurs " + count + " times.");
     }
 
     public static void size(DeckHand deck) {
