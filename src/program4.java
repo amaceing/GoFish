@@ -29,31 +29,15 @@ public class program4 {
             }
             if (b == 1) {
                 if (deckChoice == 1) {
-                    if (deckFull(deck1)) {
-                        System.out.println("This deck is full, you cannot insert another card");
-                    } else {
-                        insertCard(deck1);
-                    }
+                    insertCard(deck1);
                 } else if (deckChoice == 2) {
-                    if (deckFull(deck2)) {
-                        System.out.println("This deck is full, you cannot insert another card");
-                    } else {
-                        insertCard(deck2);
-                    }
+                    insertCard(deck2);
                 }
             } else if (b == 2) {
                 if (deckChoice == 1) {
-                    if (!deckFull(deck1)) {
-                        System.out.println("This deck is empty, you cannot delete a card");
-                    } else {
-                        deleteCard(deck1);
-                    }
+                    deleteCard(deck1);
                 } else if (deckChoice == 2) {
-                    if (!deckFull(deck2)) {
-                        System.out.println("This deck is empty, you cannot delete a card");
-                    } else {
-                        deleteCard(deck2);
-                    }
+                    deleteCard(deck2);
                 }
             } else if (b == 3) {
                 if (deckChoice == 1) {
@@ -129,7 +113,7 @@ public class program4 {
         System.out.print("Card's face value: ");
         face = console.nextInt();
         deck.popCard(face);
-        System.out.print("A card with face value " + face + "was deleted");
+        System.out.print("A card with face value " + face + " was deleted");
     }
 
     public static void count(DeckHand deck) {
@@ -147,10 +131,6 @@ public class program4 {
 
     public static void printDeck(DeckHand deck) {
         System.out.println(deck);
-    }
-
-    public static boolean deckFull(DeckHand deck) {
-        return (deck.getSize() == 52);
     }
 
     public static void quitProg() {
@@ -291,11 +271,18 @@ class DeckHand {
     //from DeckHand and replaces instance with Card at
     //the end of the deck
     public Card popCard(int faceValue) {
+        boolean foundIt = false;
         Card found = null;
         for (int i = 0; i < cardCount; i++) {
-            if (faceValue == deck[i].getFaceValue()) {
+            if (faceValue == deck[i].getFaceValue() && !foundIt) {
                 found = deck[i];
-                deck[i] = deck[cardCount - 1];
+                foundIt = true;
+                if (cardCount > 1) {
+                    deck[i] = deck[cardCount - 1];
+                    deck[cardCount - 1] = null;
+                } else {
+                    deck[i] = null;
+                }
             }
         }
         cardCount--;
