@@ -55,10 +55,26 @@ public class program4 {
                         deleteCard(deck2);
                     }
                 }
+            } else if (b == 3) {
+                if (deckChoice == 1) {
+                    count(deck1);
+                } else if (deckChoice == 2) {
+                    count(deck2);
+                }
+            } else if (b == 4) {
+                if (deckChoice == 1) {
+                    size(deck1);
+                } else if (deckChoice == 2) {
+                    size(deck2);
+                }
+            } else if (b == 5) {
+                if (deckChoice == 1) {
+                    printDeck(deck1);
+                } else if (deckChoice == 2) {
+                    printDeck(deck2);
+                }
             }
         } while (b != 7);
-        System.out.println(deck1);
-        System.out.println(deck2);
         quitProg();
     }
 
@@ -74,6 +90,9 @@ public class program4 {
         System.out.println("Choose a task number from the following:");
         System.out.println("       1 - Insert a card in the Deck");
         System.out.println("       2 - Delete one instance of a Card in the Deck");
+        System.out.println("       3 - Print the number of times a value occurs in Deck");
+        System.out.println("       4 - Print the size of the Deck");
+        System.out.println("       5 - Print the entire Deck");
         System.out.print("Insert menu option: ");
         choice = console.nextInt();
         while (choice < 1 || choice > 7) {
@@ -111,6 +130,23 @@ public class program4 {
         face = console.nextInt();
         deck.popCard(face);
         System.out.print("A card with face value " + face + "was deleted");
+    }
+
+    public static void count(DeckHand deck) {
+        int count = 0;
+        int value = 0;
+        System.out.print("Enter value to count: ");
+        value = console.nextInt();
+        count = deck.count(value);
+        System.out.println(count);
+    }
+
+    public static void size(DeckHand deck) {
+        System.out.println("The size of the deck is: " + deck.getSize());
+    }
+
+    public static void printDeck(DeckHand deck) {
+        System.out.println(deck);
     }
 
     public static boolean deckFull(DeckHand deck) {
@@ -274,9 +310,4 @@ class DeckHand {
         }
         return currentDeck;
     }
-
-    public int length() {
-        return deck.length;
-    }
-
 }
