@@ -288,12 +288,14 @@ class DeckHand {
     }
 
     //Returns one instance of a Card with given value
-    //From DeckHand
+    //from DeckHand and replaces instance with Card at
+    //the end of the deck
     public Card popCard(int faceValue) {
         Card found = null;
         for (int i = 0; i < cardCount; i++) {
             if (faceValue == deck[i].getFaceValue()) {
                 found = deck[i];
+                deck[i] = deck[cardCount - 1];
             }
         }
         cardCount--;
