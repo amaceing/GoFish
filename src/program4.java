@@ -195,34 +195,48 @@ class Card {
         String face = "";
         String suit = "";
 
-        //Face values
-        if (_faceValue == 1) {
-            face = FACE_VALUES[0];
-        } else if (_faceValue == 2) {
-            face = FACE_VALUES[1];
-        } else if (_faceValue == 3) {
-            face = FACE_VALUES[2];
-        } else if (_faceValue == 4) {
-            face = FACE_VALUES[3];
-        } else if (_faceValue == 5) {
-            face = FACE_VALUES[4];
-        } else if (_faceValue == 6) {
-            face = FACE_VALUES[5];
-        } else if (_faceValue == 7) {
-            face = FACE_VALUES[6];
-        } else if (_faceValue == 8) {
-            face = FACE_VALUES[7];
-        } else if (_faceValue == 9) {
-            face = FACE_VALUES[8];
-        } else if (_faceValue == 10) {
-            face = FACE_VALUES[9];
-        } else if (_faceValue == 11) {
-            face = FACE_VALUES[10];
-        } else if (_faceValue == 12) {
-            face = FACE_VALUES[11];
-        } else if (_faceValue == 13) {
-            face = FACE_VALUES[12];
+        switch (_faceValue) {
+            case 1:
+                face = FACE_VALUES[0];
+                break;
+            case 2:
+                face = FACE_VALUES[1];
+                break;
+            case 3:
+                face = FACE_VALUES[2];
+                break;
+            case 4:
+                face = FACE_VALUES[3];
+                break;
+            case 5:
+                face = FACE_VALUES[4];
+                break;
+            case 6:
+                face = FACE_VALUES[5];
+                break;
+            case 7:
+                face = FACE_VALUES[6];
+                break;
+            case 8:
+                face = FACE_VALUES[7];
+                break;
+            case 9:
+                face = FACE_VALUES[8];
+                break;
+            case 10:
+                face = FACE_VALUES[9];
+                break;
+            case 11:
+                face = FACE_VALUES[10];
+                break;
+            case 12:
+                face = FACE_VALUES[11];
+                break;
+            case 13:
+                face = FACE_VALUES[12];
+                break;
         }
+
 
         //Suit values
         if (_suitValue == 1) {
