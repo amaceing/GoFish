@@ -28,6 +28,60 @@ public class program4 {
                 deckChoice = console.nextInt();
                 System.out.println();
             }
+
+            switch (b) {
+                case 1:
+                    if (deckChoice == 1) {
+                        deck1 = newDeck(deck1);
+                    } else if (deckChoice == 2) {
+                        deck2 = newDeck(deck2);
+                    }
+                    break;
+                case 2:
+                    if (deckChoice == 1) {
+                        insertCard(deck1);
+                    } else if (deckChoice == 2) {
+                        insertCard(deck2);
+                    }
+                    break;
+                case 3:
+                    if (deckChoice == 1) {
+                        deleteCard(deck1);
+                    } else if (deckChoice == 2) {
+                        deleteCard(deck2);
+                    }
+                    break;
+                case 4:
+                    if (deckChoice == 1) {
+                        printCount(deck1);
+                    } else if (deckChoice == 2) {
+                        printCount(deck2);
+                    }
+                    break;
+                case 5:
+                    if (deckChoice == 1) {
+                        printSize(deck1);
+                    } else if (deckChoice == 2) {
+                        printSize(deck2);
+                    }
+                    break;
+                case 6:
+                    if (deckChoice == 1) {
+                        printDeck(deck1);
+                    } else if (deckChoice == 2) {
+                        printDeck(deck2);
+                    }
+                    break;
+                case 7:
+                    if (deckChoice == 1) {
+                        deleteRand(deck1);
+                    } else if (deckChoice == 2) {
+                        deleteRand(deck2);
+                    }
+                    break;
+            }
+
+            /*
             if (b == 1) {
                 System.out.println("A new, empty deck will replace the current" +
                                     " deck contents.");
@@ -73,6 +127,7 @@ public class program4 {
                     deleteRand(deck2);
                 }
             }
+           */
         } while (b != 8);
         quitProg();
     }
@@ -183,10 +238,10 @@ public class program4 {
     public static void printCount(DeckHand deck) {
         int count = 0;
         int value = 0;
-        System.out.print("Enter value to count: ");
+        System.out.print("Enter face value to count: ");
         value = console.nextInt();
         count = deck.count(value);
-        System.out.println("The value " + value + " occurs " + count + " times.");
+        System.out.println("The face value " + value + " occurs " + count + " times.");
     }
 
     //Prints the size of the appropriate deck when
