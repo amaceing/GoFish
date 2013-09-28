@@ -21,9 +21,10 @@ public class program4 {
             System.out.println();
             b = menu();
             System.out.println();
-            if (b != 7) {
-                System.out.print("Would you like to use the full or empty deck? \n" +
-                              "Enter 1 for the full deck and 2 for the empty deck: ");
+            if (b != 8) {
+                System.out.print("Would you like to use the the first deck or the \n" +
+                              "second deck? Enter 1 for the first deck and 2 for \n" +
+                              "second deck: ");
                 deckChoice = console.nextInt();
                 System.out.println();
             }
@@ -65,8 +66,10 @@ public class program4 {
                 } else if (deckChoice == 2) {
                     printDeck(deck2);
                 }
+            } else if (b == 7) {
+                deleteRand(deck1);
             }
-        } while (b != 7);
+        } while (b != 8);
         quitProg();
     }
 
@@ -74,7 +77,7 @@ public class program4 {
         System.out.println("This program is designed to use and manipulate \n" +
                             "decks of cards. You will be able to perform various \n" +
                             "actions with the decks of cards. These actions will be" +
-                            "described in the menu");
+                            "described in the menu.");
     }
 
     public static int menu() {
@@ -86,9 +89,11 @@ public class program4 {
         System.out.println("       4 - Print the number of times a value occurs in Deck");
         System.out.println("       5 - Print the size of the Deck");
         System.out.println("       6 - Print the entire Deck");
+        System.out.println("       7 - Delete a random Card");
+        System.out.println("       8 - Quit the program");
         System.out.print("Insert menu option: ");
         choice = console.nextInt();
-        while (choice < 1 || choice > 7) {
+        while (choice < 1 || choice > 8) {
             System.out.print("Enter a number between 1 and 7: ");
             choice = console.nextInt();
             System.out.println();
@@ -111,11 +116,10 @@ public class program4 {
         face = console.nextInt();
         System.out.print("Card's suit value (1 - 4): ");
         suit = console.nextInt();
+        Card newCard = new Card(face, suit);
+        deck.pushCard(newCard);
         System.out.println();
-        deck.pushCard(new Card(face, suit));
-        System.out.println();
-        System.out.println("The card with face value " + face + " and suit value " + suit +
-                            "\n" + "was inserted.");
+        System.out.println("The card " + newCard + " was inserted.");
     }
 
     public static void deleteCard(DeckHand deck) {
@@ -125,12 +129,17 @@ public class program4 {
         face = console.nextInt();
         count = deck.count(face);
         if (count != 0) {
-            deck.popCard(face);
-            System.out.println("A card with face value " + face + " was deleted");
+            Card deleted = deck.popCard(face);
+            System.out.println("The card " + deleted + " was deleted.");
         } else {
             System.out.println("No card with face value " + face +
-                                " was found");
+                                " was found.");
         }
+    }
+
+    public static void deleteRand(DeckHand deck) {
+        Card deleted = deck.popAny();
+        System.out.println("The card " + deleted + " was deleted.");
     }
 
     public static void count(DeckHand deck) {
@@ -151,7 +160,7 @@ public class program4 {
     }
 
     public static void quitProg() {
-        System.out.println("You have quit the program");
+        System.out.println("You have quit the program.");
     }
 }
 
@@ -199,6 +208,8 @@ class Card {
 class DeckHand {
 
     private static final int CARDS = 52;
+    private static final int FACE_VALUE = 13;
+    private static Random generator = new Random();
     private int cardCount;
     private Card[] deck;
 
@@ -244,6 +255,27 @@ class DeckHand {
     //from DeckHand and replaces instance with Card at
     //the end of the deck
     public Card popCard(int faceValue) {
+        return findCard(faceValue);
+    }
+
+    public Card popAny() {
+        int deletionVal = 0;
+        deletionVal = generator.nextInt(FACE_VALUE) + 1;
+        return findCard(deletionVal);
+    }
+
+    //Prints out entire deck
+    public String toString() {
+        String currentDeck = "";
+        for (int i = 0; i < cardCount; i++) {
+            if (deck[i] != null) {
+                currentDeck += deck[i] + "\n";
+            }
+        }
+        return currentDeck;
+    }
+
+    private Card findCard(int faceValue) {
         boolean foundIt = false;
         Card found = null;
         for (int i = 0; i < cardCount; i++) {
@@ -260,16 +292,5 @@ class DeckHand {
         deck[cardCount - 1] = null;
         cardCount--;
         return found;
-    }
-
-    //Prints out entire deck
-    public String toString() {
-        String currentDeck = "";
-        for (int i = 0; i < cardCount; i++) {
-            if (deck[i] != null) {
-                currentDeck += deck[i] + "\n";
-            }
-        }
-        return currentDeck;
     }
 }
