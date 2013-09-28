@@ -28,106 +28,44 @@ public class program4 {
                 deckChoice = console.nextInt();
                 System.out.println();
             }
-
+            DeckHand deckChosen = null;
+            switch (deckChoice) {
+                case 1:
+                    deckChosen = deck1;
+                    break;
+                case 2:
+                    deckChosen = deck2;
+                    break;
+            }
             switch (b) {
                 case 1:
+                    System.out.println("A new, empty deck will replace the current" +
+                            " deck contents.");
                     if (deckChoice == 1) {
-                        deck1 = newDeck(deck1);
+                        deck1 = newDeck(deckChosen);
                     } else if (deckChoice == 2) {
-                        deck2 = newDeck(deck2);
+                        deck2 = newDeck(deckChosen);
                     }
                     break;
                 case 2:
-                    if (deckChoice == 1) {
-                        insertCard(deck1);
-                    } else if (deckChoice == 2) {
-                        insertCard(deck2);
-                    }
+                    insertCard(deckChosen);
                     break;
                 case 3:
-                    if (deckChoice == 1) {
-                        deleteCard(deck1);
-                    } else if (deckChoice == 2) {
-                        deleteCard(deck2);
-                    }
+                    deleteCard(deckChosen);
                     break;
                 case 4:
-                    if (deckChoice == 1) {
-                        printCount(deck1);
-                    } else if (deckChoice == 2) {
-                        printCount(deck2);
-                    }
+                    printCount(deckChosen);
                     break;
                 case 5:
-                    if (deckChoice == 1) {
-                        printSize(deck1);
-                    } else if (deckChoice == 2) {
-                        printSize(deck2);
-                    }
+                    printSize(deckChosen);
                     break;
                 case 6:
-                    if (deckChoice == 1) {
-                        printDeck(deck1);
-                    } else if (deckChoice == 2) {
-                        printDeck(deck2);
-                    }
+                    printDeck(deckChosen);
                     break;
                 case 7:
-                    if (deckChoice == 1) {
-                        deleteRand(deck1);
-                    } else if (deckChoice == 2) {
-                        deleteRand(deck2);
-                    }
+                    deleteRand(deckChosen);
                     break;
             }
-
-            /*
-            if (b == 1) {
-                System.out.println("A new, empty deck will replace the current" +
-                                    " deck contents.");
-                if (deckChoice == 1) {
-                    deck1 = newDeck(deck1);
-                } else if (deckChoice == 2) {
-                    deck2 = newDeck(deck2);
-                }
-            } else if (b == 2) {
-                if (deckChoice == 1) {
-                    insertCard(deck1);
-                } else if (deckChoice == 2) {
-                    insertCard(deck2);
-                }
-            } else if (b == 3) {
-                if (deckChoice == 1) {
-                    deleteCard(deck1);
-                } else if (deckChoice == 2) {
-                    deleteCard(deck2);
-                }
-            } else if (b == 4) {
-                if (deckChoice == 1) {
-                    printCount(deck1);
-                } else if (deckChoice == 2) {
-                    printCount(deck2);
-                }
-            } else if (b == 5) {
-                if (deckChoice == 1) {
-                    printSize(deck1);
-                } else if (deckChoice == 2) {
-                    printSize(deck2);
-                }
-            } else if (b == 6) {
-                if (deckChoice == 1) {
-                    printDeck(deck1);
-                } else if (deckChoice == 2) {
-                    printDeck(deck2);
-                }
-            } else if (b == 7) {
-                if (deckChoice == 1) {
-                    deleteRand(deck1);
-                } else if (deckChoice == 2) {
-                    deleteRand(deck2);
-                }
-            }
-           */
         } while (b != 8);
         quitProg();
     }
