@@ -77,6 +77,8 @@ public class program4 {
         quitProg();
     }
 
+    //Prints the intro to let the user know what the program
+    //does
     public static void printIntro() {
         System.out.println("This program is designed to use and manipulate \n" +
                             "decks of cards. You will be able to perform various \n" +
@@ -84,6 +86,8 @@ public class program4 {
                             "described in the menu.");
     }
 
+    //Prints the menu, acquires menu choice,
+    //returns menu choice
     public static int menu() {
         int choice = 0;
         System.out.println("Choose a task number from the following:");
@@ -105,6 +109,7 @@ public class program4 {
         return choice;
     }
 
+    //Fills deck1 to a standard, full poker deck
     public static void fillDeck(DeckHand fullDeck) {
         for (int i = 1; i <= 13; i++) {
             for (int j = 1; j <= 4; j++) {
@@ -113,11 +118,15 @@ public class program4 {
         }
     }
 
+    //Creates a new, empty DeckHand when the user picks
+    //menu option 1
     public static DeckHand newDeck(DeckHand deck) {
         deck = new DeckHand();
         return deck;
     }
 
+    //Inserts a card when the user picks menu option 2
+    //into the appropriate deck
     public static void insertCard(DeckHand deck) {
         int face = 0;
         int suit = 0;
@@ -131,6 +140,8 @@ public class program4 {
         System.out.println("The card " + newCard + " was inserted.");
     }
 
+    //Deletes a card with a given face value from the
+    //appropriate deck when user picks menu option 3
     public static void deleteCard(DeckHand deck) {
         int face = 0;
         int count = 0;
@@ -146,6 +157,10 @@ public class program4 {
         }
     }
 
+    //Deletes a random card from the appropriate deck
+    //when user picks menu option 7. If no card with
+    //the randomly generate face value is found in the deck
+    //the method lets the user know that no card was deleted
     public static void deleteRand(DeckHand deck) {
         int size = 0;
         size = deck.getSize();
@@ -162,6 +177,9 @@ public class program4 {
 
     }
 
+    //Prints the count of the given face value
+    //from the appropriate deck when user picks menu
+    //option 4
     public static void printCount(DeckHand deck) {
         int count = 0;
         int value = 0;
@@ -171,14 +189,20 @@ public class program4 {
         System.out.println("The value " + value + " occurs " + count + " times.");
     }
 
+    //Prints the size of the appropriate deck when
+    //user picks menu option 5
     public static void printSize(DeckHand deck) {
         System.out.println("The size of the deck is: " + deck.getSize());
     }
 
+    //Prints the entire deck when user picks
+    //menu option 6
     public static void printDeck(DeckHand deck) {
         System.out.println(deck);
     }
 
+    //Checks that the given card is in the deck,
+    //if not, lets the user know
     public static void checkCard(Card card) {
         boolean nullCard = false;
         if (card == null) {
@@ -189,6 +213,8 @@ public class program4 {
         }
     }
 
+    //Quits program and displays message when user
+    //picks menu option 8
     public static void quitProg() {
         System.out.println("You have quit the program.");
     }
@@ -298,9 +324,7 @@ class DeckHand {
     public String toString() {
         String currentDeck = "";
         for (int i = 0; i < cardCount; i++) {
-            if (deck[i] != null) {
                 currentDeck += deck[i] + "\n";
-            }
         }
         return currentDeck;
     }
