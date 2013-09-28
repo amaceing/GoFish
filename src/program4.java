@@ -50,15 +50,15 @@ public class program4 {
                 }
             } else if (b == 4) {
                 if (deckChoice == 1) {
-                    count(deck1);
+                    printCount(deck1);
                 } else if (deckChoice == 2) {
-                    count(deck2);
+                    printCount(deck2);
                 }
             } else if (b == 5) {
                 if (deckChoice == 1) {
-                    size(deck1);
+                    printSize(deck1);
                 } else if (deckChoice == 2) {
-                    size(deck2);
+                    printSize(deck2);
                 }
             } else if (b == 6) {
                 if (deckChoice == 1) {
@@ -67,7 +67,11 @@ public class program4 {
                     printDeck(deck2);
                 }
             } else if (b == 7) {
-                deleteRand(deck1);
+                if (deckChoice == 1) {
+                    deleteRand(deck1);
+                } else if (deckChoice == 2) {
+                    deleteRand(deck2);
+                }
             }
         } while (b != 8);
         quitProg();
@@ -130,7 +134,7 @@ public class program4 {
         count = deck.count(face);
         if (count != 0) {
             Card deleted = deck.popCard(face);
-            System.out.println("The card " + deleted + " was deleted.");
+            checkCard(deleted);
         } else {
             System.out.println("No card with face value " + face +
                                 " was found.");
@@ -138,11 +142,22 @@ public class program4 {
     }
 
     public static void deleteRand(DeckHand deck) {
-        Card deleted = deck.popAny();
-        System.out.println("The card " + deleted + " was deleted.");
+        int size = 0;
+        size = deck.getSize();
+        if (size != 0) {
+            Card deleted = deck.popAny();
+            if (deleted == null) {
+                System.out.println("No card was deleted.");
+            } else {
+                System.out.println("The card " + deleted + " was deleted.");
+            }
+        } else {
+            System.out.println("There are no cards in this deck");
+        }
+
     }
 
-    public static void count(DeckHand deck) {
+    public static void printCount(DeckHand deck) {
         int count = 0;
         int value = 0;
         System.out.print("Enter value to count: ");
@@ -151,12 +166,22 @@ public class program4 {
         System.out.println("The value " + value + " occurs " + count + " times.");
     }
 
-    public static void size(DeckHand deck) {
+    public static void printSize(DeckHand deck) {
         System.out.println("The size of the deck is: " + deck.getSize());
     }
 
     public static void printDeck(DeckHand deck) {
         System.out.println(deck);
+    }
+
+    public static void checkCard(Card card) {
+        boolean nullCard = false;
+        if (card == null) {
+            System.out.println("No card was deleted.");
+            nullCard = true;
+        } else {
+            System.out.println("The card " + card + " was deleted.");
+        }
     }
 
     public static void quitProg() {
@@ -289,8 +314,10 @@ class DeckHand {
                 }
             }
         }
-        deck[cardCount - 1] = null;
-        cardCount--;
+        if (foundIt) {
+            deck[cardCount - 1] = null;
+            cardCount--;
+        }
         return found;
     }
 }
