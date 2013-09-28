@@ -159,11 +159,7 @@ public class program4 {
         size = deck.getSize();
         if (size != 0) {
             Card deleted = deck.popAny();
-            if (deleted == null) {
-                System.out.println("No card was deleted.");
-            } else {
-                System.out.println("The card " + deleted + " was deleted.");
-            }
+            checkCard(deleted);
         } else {
             System.out.println("There are no cards in this deck");
         }
