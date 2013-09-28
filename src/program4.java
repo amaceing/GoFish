@@ -239,14 +239,19 @@ class Card {
 
 
         //Suit values
-        if (_suitValue == 1) {
-            suit = SUIT_VALUES[0];
-        } else if (_suitValue == 2) {
-            suit = SUIT_VALUES[1];
-        } else if (_suitValue == 3) {
-            suit = SUIT_VALUES[2];
-        } else if (_suitValue == 4) {
-            suit = SUIT_VALUES[3];
+        switch (_suitValue) {
+            case 1:
+                suit = SUIT_VALUES[0];
+                break;
+            case 2:
+                suit = SUIT_VALUES[1];
+                break;
+            case 3:
+                suit = SUIT_VALUES[2];
+                break;
+            case 4:
+                suit = SUIT_VALUES[3];
+                break;
         }
 
         return face + suit;
