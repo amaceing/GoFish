@@ -32,9 +32,9 @@ public class program4 {
                 System.out.println("A new, empty deck will replace the current" +
                                     " deck contents.");
                 if (deckChoice == 1) {
-                    deck1 = new DeckHand();
+                    deck1 = newDeck(deck1);
                 } else if (deckChoice == 2) {
-                    deck2 = new DeckHand();
+                    deck2 = newDeck(deck2);
                 }
             } else if (b == 2) {
                 if (deckChoice == 1) {
@@ -111,6 +111,11 @@ public class program4 {
                 fullDeck.pushCard(new Card(i, j));
             }
         }
+    }
+
+    public static DeckHand newDeck(DeckHand deck) {
+        deck = new DeckHand();
+        return deck;
     }
 
     public static void insertCard(DeckHand deck) {
