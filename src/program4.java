@@ -111,6 +111,7 @@ public class program4 {
         face = console.nextInt();
         System.out.print("Card's suit value (1 - 4): ");
         suit = console.nextInt();
+        System.out.println();
         deck.pushCard(new Card(face, suit));
         System.out.println();
         System.out.println("The card with face value " + face + " and suit value " + suit +
@@ -171,13 +172,8 @@ class Card {
 
     //Constructs a card with values passed
     public Card(int faceValue, int suitValue) {
-        if ((faceValue < 1 || faceValue > 13) ||
-            (suitValue < 1 || suitValue > 4)) {
-            System.out.println("Invalid suit or face value");
-        } else {
-            _faceValue = faceValue;
-            _suitValue = suitValue;
-        }
+        _faceValue = faceValue;
+        _suitValue = suitValue;
     }
 
     //Returns faceValue int
@@ -194,66 +190,8 @@ class Card {
     public String toString() {
         String face = "";
         String suit = "";
-
-        switch (_faceValue) {
-            case 1:
-                face = FACE_VALUES[0];
-                break;
-            case 2:
-                face = FACE_VALUES[1];
-                break;
-            case 3:
-                face = FACE_VALUES[2];
-                break;
-            case 4:
-                face = FACE_VALUES[3];
-                break;
-            case 5:
-                face = FACE_VALUES[4];
-                break;
-            case 6:
-                face = FACE_VALUES[5];
-                break;
-            case 7:
-                face = FACE_VALUES[6];
-                break;
-            case 8:
-                face = FACE_VALUES[7];
-                break;
-            case 9:
-                face = FACE_VALUES[8];
-                break;
-            case 10:
-                face = FACE_VALUES[9];
-                break;
-            case 11:
-                face = FACE_VALUES[10];
-                break;
-            case 12:
-                face = FACE_VALUES[11];
-                break;
-            case 13:
-                face = FACE_VALUES[12];
-                break;
-        }
-
-
-        //Suit values
-        switch (_suitValue) {
-            case 1:
-                suit = SUIT_VALUES[0];
-                break;
-            case 2:
-                suit = SUIT_VALUES[1];
-                break;
-            case 3:
-                suit = SUIT_VALUES[2];
-                break;
-            case 4:
-                suit = SUIT_VALUES[3];
-                break;
-        }
-
+        face = FACE_VALUES[_faceValue - 1];
+        suit = SUIT_VALUES[_suitValue - 1];
         return face + suit;
     }
 }
