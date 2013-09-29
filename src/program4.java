@@ -193,10 +193,8 @@ public class program4 {
     //Checks that the given card is in the deck,
     //if not, lets the user know
     public static void checkCard(Card card) {
-        boolean nullCard = false;
         if (card == null) {
             System.out.println("No card was deleted.");
-            nullCard = true;
         } else {
             System.out.println("The card " + card + " was deleted.");
         }
