@@ -28,6 +28,12 @@ public class program4 {
                 deckChoice = console.nextInt();
                 System.out.println();
             }
+            while (deckChoice != 1 && deckChoice != 2) {
+                System.out.println("You did not pick a valid deck.");
+                System.out.print("Enter 1 or 2: ");
+                deckChoice = console.nextInt();
+                System.out.println();
+            }
             DeckHand deckChosen = null;
             switch (deckChoice) {
                 case 1:
@@ -87,7 +93,8 @@ public class program4 {
         System.out.println("       1 - Create a new, empty deck");
         System.out.println("       2 - Insert a card in the Deck");
         System.out.println("       3 - Delete one instance of a Card in the Deck");
-        System.out.println("       4 - Print the number of times a value occurs in Deck");
+        System.out.println("       4 - Print the number of times a face value" +
+                                    " occurs in Deck");
         System.out.println("       5 - Print the size of the Deck");
         System.out.println("       6 - Print the entire Deck");
         System.out.println("       7 - Delete a random Card");
@@ -143,10 +150,8 @@ public class program4 {
         count = deck.count(face);
         if (count != 0) {
             Card deleted = deck.popCard(face);
+            System.out.println();
             checkCard(deleted);
-        } else {
-            System.out.println("No card with face value " + face +
-                                " was found.");
         }
     }
 
@@ -160,10 +165,7 @@ public class program4 {
         if (size != 0) {
             Card deleted = deck.popAny();
             checkCard(deleted);
-        } else {
-            System.out.println("There are no cards in this deck");
         }
-
     }
 
     //Prints the count of the given face value
@@ -175,6 +177,7 @@ public class program4 {
         System.out.print("Enter face value to count: ");
         value = console.nextInt();
         count = deck.count(value);
+        System.out.println();
         System.out.println("The face value " + value + " occurs " + count + " times.");
     }
 
@@ -193,9 +196,7 @@ public class program4 {
     //Checks that the given card is in the deck,
     //if not, lets the user know
     public static void checkCard(Card card) {
-        if (card == null) {
-            System.out.println("No card was deleted.");
-        } else {
+        if (card != null) {
             System.out.println("The card " + card + " was deleted.");
         }
     }
