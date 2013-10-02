@@ -116,15 +116,6 @@ public class program4 {
         System.out.println(compDeck);
     }
 
-    //Deals card to each deck
-    public static void deal(DeckHand full, DeckHand deck) {
-        int numCards = 7;
-        for (int i = 0; i < 7; i++) {
-            Card dealtCard = full.popAny();
-            deck.pushCard(dealtCard);
-        }
-    }
-
     //Prints the intro to let the user know what the program
     //does
     public static void printIntro() {
@@ -177,6 +168,15 @@ public class program4 {
             for (int j = 1; j <= 4; j++) {
                 fullDeck.pushCard(new Card(i, j));
             }
+        }
+    }
+
+    //Deals card to each deck
+    public static void deal(DeckHand full, DeckHand deck) {
+        int numCards = 7;
+        for (int i = 0; i < 7; i++) {
+            Card dealtCard = full.popAny();
+            deck.pushCard(dealtCard);
         }
     }
 
