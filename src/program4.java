@@ -19,7 +19,8 @@ public class program4 {
             if (a == 1) {
                 testDeck();
             } else if (a == 2) {
-                System.out.println("Go fish");
+                System.out.println("Let's play Go fish!");
+                goFish();
             }
         } while (a != 3);
         quitProg();
@@ -98,17 +99,38 @@ public class program4 {
                 System.out.println("You did not enter Y or N");
                 System.out.print("Enter Y or N: ");
                 again = console.next().charAt(0);
+                System.out.println();
             }
         } while (again == 'Y' || again == 'y');
+    }
+
+    //Plays Go Fish
+    public static void goFish() {
+        DeckHand stock = new DeckHand();
+        fillDeck(stock);
+        DeckHand userDeck = new DeckHand();
+        DeckHand compDeck = new DeckHand();
+        deal(stock, userDeck);
+        deal(stock, compDeck);
+        System.out.println(userDeck);
+        System.out.println(compDeck);
+    }
+
+    //Deals card to each deck
+    public static void deal(DeckHand full, DeckHand deck) {
+        int numCards = 7;
+        for (int i = 0; i < 7; i++) {
+            Card dealtCard = full.popAny();
+            deck.pushCard(dealtCard);
+        }
     }
 
     //Prints the intro to let the user know what the program
     //does
     public static void printIntro() {
-        System.out.println("This program is designed to use and manipulate \n" +
-                            "decks of cards. You will be able to perform various \n" +
-                            "actions with the decks of cards. These actions will be" +
-                            "described in the menu.");
+        System.out.println("This program is designed to maniputlate " +
+                            "decks of cards \nand allow the user to play " +
+                            " the card game Go Fish.");
     }
 
     //Prints the main menu, acquires menu choice,
