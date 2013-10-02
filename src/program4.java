@@ -10,6 +10,7 @@ public class program4 {
     public static Scanner console = new Scanner(System.in);
 
     public static void main(String[] args) {
+        int a = 0;
         int b = 0;
         int deckChoice = 0;
         char again = '0';
@@ -19,72 +20,81 @@ public class program4 {
         fillDeck(deck1);
         DeckHand deck2 = new DeckHand();
         do {
+            a = mainMenu();
             System.out.println();
-            b = deckMenu();
-            System.out.println();
-            if (b != 8) {
-                System.out.print("Would you like to use the the first deck or the \n" +
-                              "second deck? Enter 1 for the first deck and 2 for \n" +
-                              "second deck: ");
-                deckChoice = console.nextInt();
-                System.out.println();
-            }
-            while (deckChoice != 1 && deckChoice != 2) {
-                System.out.println("You did not pick a valid deck.");
-                System.out.print("Enter 1 or 2: ");
-                deckChoice = console.nextInt();
-                System.out.println();
-            }
-            DeckHand deckChosen = null;
-            switch (deckChoice) {
-                case 1:
-                    deckChosen = deck1;
-                    break;
-                case 2:
-                    deckChosen = deck2;
-                    break;
-            }
-            switch (b) {
-                case 1:
-                    System.out.println("A new, empty deck will replace the current" +
-                            " deck contents.");
-                    if (deckChoice == 1) {
-                        deck1 = newDeck(deckChosen);
-                    } else if (deckChoice == 2) {
-                        deck2 = newDeck(deckChosen);
+            if (a == 1) {
+                do {
+                    b = deckMenu();
+                    System.out.println();
+                    if (b != 8) {
+                        System.out.print("Would you like to use the the first deck or the \n" +
+                                  "second deck? Enter 1 for the first deck and 2 for \n" +
+                                  "second deck: ");
+                        deckChoice = console.nextInt();
+                        System.out.println();
                     }
-                    break;
-                case 2:
-                    insertCard(deckChosen);
-                    break;
-                case 3:
-                    deleteCard(deckChosen);
-                    break;
-                case 4:
-                    printCount(deckChosen);
-                    break;
-                case 5:
-                    printSize(deckChosen);
-                    break;
-                case 6:
-                    printDeck(deckChosen);
-                    break;
-                case 7:
-                    deleteRand(deckChosen);
-                    break;
-            }
-            System.out.println();
-            System.out.println("Would you like to perform more menu" +
+                    while (deckChoice != 1 && deckChoice != 2) {
+                        System.out.println("You did not pick a valid deck.");
+                        System.out.print("Enter 1 or 2: ");
+                        deckChoice = console.nextInt();
+                        System.out.println();
+                    }
+                    DeckHand deckChosen = null;
+                    switch (deckChoice) {
+                        case 1:
+                            deckChosen = deck1;
+                            break;
+                        case 2:
+                            deckChosen = deck2;
+                            break;
+                    }
+                    switch (b) {
+                        case 1:
+                            System.out.println("A new, empty deck will replace the current" +
+                            " deck contents.");
+                            if (deckChoice == 1) {
+                                deck1 = newDeck(deckChosen);
+                            } else if (deckChoice == 2) {
+                                deck2 = newDeck(deckChosen);
+                            }
+                            break;
+                        case 2:
+                            insertCard(deckChosen);
+                            break;
+                        case 3:
+                            deleteCard(deckChosen);
+                            break;
+                        case 4:
+                            printCount(deckChosen);
+                            break;
+                        case 5:
+                            printSize(deckChosen);
+                            break;
+                        case 6:
+                            printDeck(deckChosen);
+                            break;
+                        case 7:
+                            deleteRand(deckChosen);
+                            break;
+                    }
+                    System.out.println();
+                    System.out.println("Would you like to perform more menu" +
                                 " options?");
-            System.out.print("Yes or No? Enter Y or N: ");
-            again = console.next().charAt(0);
-            while (again != 'Y' && again != 'y'
-                   && again != 'N' && again != 'n') {
-                System.out.println("You did not enter Y or N");
-                System.out.print("Enter Y or N: ");
-                again = console.next().charAt(0);
+                    System.out.print("Yes or No? Enter Y or N: ");
+                    again = console.next().charAt(0);
+                    System.out.println();
+                    while (again != 'Y' && again != 'y'
+                        && again != 'N' && again != 'n') {
+                        System.out.println("You did not enter Y or N");
+                        System.out.print("Enter Y or N: ");
+                        again = console.next().charAt(0);
+                    }
+                } while (again == 'Y' || again == 'y');
+            } else if (a == 2) {
+                System.out.println("Go fish");
             }
-        } while (again == 'Y' || again == 'y');
+        } while (a != 3);
+        quitProg();
     }
 
     //Prints the intro to let the user know what the program
@@ -96,7 +106,23 @@ public class program4 {
                             "described in the menu.");
     }
 
-    //Prints the menu, acquires menu choice,
+    //Prints the main menu, acquires menu choice,
+    //returns menu choice
+    public static int mainMenu() {
+        int choice = 0;
+        System.out.println("Choose a task number from the following:");
+        System.out.println("       1 - Test DeckHand");
+        System.out.println("       2 - Play \"Go Fish\"");
+        System.out.println("       3 - Quit the program");
+        while (choice < 1 || choice > 3) {
+            System.out.print("Enter a number between 1 and 3: ");
+            choice = console.nextInt();
+            System.out.println();
+        }
+        return choice;
+
+    }
+    //Prints the deck menu, acquires menu choice,
     //returns menu choice
     public static int deckMenu() {
         int choice = 0;
@@ -111,7 +137,7 @@ public class program4 {
         System.out.println("       7 - Delete a random Card");
         System.out.print("Insert menu option: ");
         choice = console.nextInt();
-        while (choice < 1 || choice > 8) {
+        while (choice < 1 || choice > 7) {
             System.out.print("Enter a number between 1 and 7: ");
             choice = console.nextInt();
             System.out.println();
@@ -209,6 +235,10 @@ public class program4 {
         if (card != null) {
             System.out.println("The card " + card + " was deleted.");
         }
+    }
+
+    public static void quitProg() {
+        System.out.println("You have quit the program.");
     }
 }
 
