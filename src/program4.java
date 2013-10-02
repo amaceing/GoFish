@@ -14,6 +14,7 @@ public class program4 {
         printIntro();
         System.out.println();
         do {
+            System.out.println();
             a = mainMenu();
             if (a == 1) {
                 testDeck();
@@ -144,7 +145,6 @@ public class program4 {
         while (choice < 1 || choice > 7) {
             System.out.print("Enter a number between 1 and 7: ");
             choice = console.nextInt();
-            System.out.println();
         }
         return choice;
     }
