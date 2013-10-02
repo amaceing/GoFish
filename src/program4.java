@@ -12,6 +12,7 @@ public class program4 {
     public static void main(String[] args) {
         int b = 0;
         int deckChoice = 0;
+        char again = '0';
         printIntro();
         System.out.println();
         DeckHand deck1 = new DeckHand();
@@ -19,7 +20,7 @@ public class program4 {
         DeckHand deck2 = new DeckHand();
         do {
             System.out.println();
-            b = menu();
+            b = deckMenu();
             System.out.println();
             if (b != 8) {
                 System.out.print("Would you like to use the the first deck or the \n" +
@@ -72,8 +73,18 @@ public class program4 {
                     deleteRand(deckChosen);
                     break;
             }
-        } while (b != 8);
-        quitProg();
+            System.out.println();
+            System.out.println("Would you like to perform more menu" +
+                                " options?");
+            System.out.print("Yes or No? Enter Y or N: ");
+            again = console.next().charAt(0);
+            while (again != 'Y' && again != 'y'
+                   && again != 'N' && again != 'n') {
+                System.out.println("You did not enter Y or N");
+                System.out.print("Enter Y or N: ");
+                again = console.next().charAt(0);
+            }
+        } while (again == 'Y' || again == 'y');
     }
 
     //Prints the intro to let the user know what the program
@@ -87,7 +98,7 @@ public class program4 {
 
     //Prints the menu, acquires menu choice,
     //returns menu choice
-    public static int menu() {
+    public static int deckMenu() {
         int choice = 0;
         System.out.println("Choose a task number from the following:");
         System.out.println("       1 - Create a new, empty deck");
@@ -98,7 +109,6 @@ public class program4 {
         System.out.println("       5 - Print the size of the Deck");
         System.out.println("       6 - Print the entire Deck");
         System.out.println("       7 - Delete a random Card");
-        System.out.println("       8 - Quit the program");
         System.out.print("Insert menu option: ");
         choice = console.nextInt();
         while (choice < 1 || choice > 8) {
@@ -199,12 +209,6 @@ public class program4 {
         if (card != null) {
             System.out.println("The card " + card + " was deleted.");
         }
-    }
-
-    //Quits program and displays message when user
-    //picks menu option 8
-    public static void quitProg() {
-        System.out.println("You have quit the program.");
     }
 }
 
