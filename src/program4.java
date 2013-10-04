@@ -171,10 +171,10 @@ public class program4 {
         }
     }
 
-    //Deals card to each deck
+    //Deals 7 cards to each deck
     public static void deal(DeckHand full, DeckHand deck) {
         int numCards = 7;
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < numCards; i++) {
             Card dealtCard = full.popAny();
             deck.pushCard(dealtCard);
         }
