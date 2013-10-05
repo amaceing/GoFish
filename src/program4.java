@@ -106,6 +106,8 @@ public class program4 {
 
     //Plays Go Fish
     public static void goFish() {
+        int numBooks = 0;
+        int cardsInBook = 0;
         int face = 0;
         int cardCount = 0;
         Card deletedCard = null;
@@ -120,8 +122,24 @@ public class program4 {
         deal(stock, compDeck);
         do {
             if (playerTurn) {
+                System.out.println("Game Status:");
+                System.out.println();
+                System.out.println("Books: " + numBooks);
+                System.out.println("Hand:");
                 System.out.println(userDeck);
                 face = askCard(userDeck);
+                cardsInBook = userDeck.count(face);
+                if (cardsInBook == 4) {
+                    numBooks++;
+                    System.out.println();
+                    System.out.println("You've got a book!");
+                    System.out.println("These cards will now be deleted from your hand.");
+                    System.out.println();
+                    for (int i = 0; i < cardsInBook; i++) {
+                        deletedCard = userDeck.popCard(face);
+                        System.out.println(deletedCard);
+                    }
+                }
                 hasCard(face, compDeck);
                 if (hasCard(face, compDeck)) {
                     cardCount = compDeck.count(face);
@@ -131,8 +149,7 @@ public class program4 {
                     }
                 } else {
                     System.out.println();
-                    System.out.println("The other player does not have");
-                    System.out.println("any cards with this face value.");
+                    System.out.println("Go Fish!");
                     System.out.println("You must draw a card from the deck.");
                     draw = stock.popAny();
                     userDeck.pushCard(draw);
@@ -142,7 +159,6 @@ public class program4 {
                 }
             } else {
                 System.out.println(compDeck);
-                randDeletedCard = askRandCard(compDeck);
                 playerTurn = true;
                 System.out.println();
             }
