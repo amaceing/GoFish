@@ -106,6 +106,8 @@ public class program4 {
 
     //Plays Go Fish
     public static void goFish() {
+        int face = 0;
+        boolean playerTurn = true;
         DeckHand stock = new DeckHand();
         fillDeck(stock);
         DeckHand userDeck = new DeckHand();
@@ -114,6 +116,11 @@ public class program4 {
         deal(stock, compDeck);
         System.out.println(userDeck);
         System.out.println(compDeck);
+        if (playerTurn) {
+            face = askCard(userDeck);
+            System.out.println(face);
+            playerTurn = false;
+        }
     }
 
     //Prints the intro to let the user know what the program
@@ -185,6 +192,27 @@ public class program4 {
     public static DeckHand newDeck(DeckHand deck) {
         deck = new DeckHand();
         return deck;
+    }
+
+    public static int askCard(DeckHand deck) {
+        int face = 0;
+        int count = 0;
+        boolean cardInDeck = false;
+        System.out.println("Which card from your hand would you like to ask for?");
+        System.out.print("Enter the face value: ");
+        face = console.nextInt();
+        count = deck.count(face);
+        while (count == 0) {
+            System.out.println();
+            System.out.println("No card with the entered face value is in" +
+                                " your hand!");
+            System.out.print("Please enter a face value that is in your hand: ");
+            face = console.nextInt();
+            count = deck.count(face);
+        }
+        System.out.println();
+        System.out.println("Can I please have your " + face + "'s");
+        return face;
     }
 
     //Inserts a card when the user picks menu option 2
