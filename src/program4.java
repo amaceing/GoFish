@@ -221,6 +221,9 @@ public class program4 {
         return deck;
     }
 
+    //Method that asks the player to choose a card
+    //from their hand and checks that it's a valid card.
+    //Returns the card's face value
     public static int askCard(DeckHand deck) {
         int face = 0;
         int count = 0;
@@ -242,12 +245,18 @@ public class program4 {
         return face;
     }
 
+
+    //Method that selects a random card from
+    //the computer's hand *NOT FINISHED*
     public static Card askRandCard(DeckHand deck) {
         Card deleted = deck.popAny();
         System.out.println(deleted);
         return deleted;
     }
 
+    //Boolean returning method that shows whether
+    //or not a card with parameter faceValue is
+    //in the given DeckHand
     public static boolean hasCard(int faceValue,DeckHand deck) {
         int count = 0;
         count = deck.count(faceValue);
