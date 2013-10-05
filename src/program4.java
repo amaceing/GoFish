@@ -127,7 +127,6 @@ public class program4 {
                 System.out.println("Books: " + numBooks);
                 System.out.println("Hand:");
                 System.out.println(userDeck);
-                face = askCard(userDeck);
                 cardsInBook = userDeck.count(face);
                 if (cardsInBook == 4) {
                     numBooks++;
@@ -140,6 +139,8 @@ public class program4 {
                         System.out.println(deletedCard);
                     }
                 }
+                System.out.println();
+                face = askCard(userDeck);
                 hasCard(face, compDeck);
                 if (hasCard(face, compDeck)) {
                     cardCount = compDeck.count(face);
