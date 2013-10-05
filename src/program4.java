@@ -107,6 +107,8 @@ public class program4 {
     //Plays Go Fish
     public static void goFish() {
         int face = 0;
+        int cardCount = 0;
+        Card deletedCard = null;
         boolean playerTurn = true;
         DeckHand stock = new DeckHand();
         fillDeck(stock);
@@ -119,6 +121,16 @@ public class program4 {
         if (playerTurn) {
             face = askCard(userDeck);
             System.out.println(face);
+            hasCard(face, compDeck);
+            if (hasCard(face, compDeck)) {
+                cardCount = compDeck.count(face);
+                for (int i = 0; i < cardCount; i++) {
+                    deletedCard = compDeck.popCard(face);
+                    userDeck.pushCard(deletedCard);
+                }
+                System.out.println(compDeck);
+                System.out.println(userDeck);
+            }
             playerTurn = false;
         }
     }
@@ -213,6 +225,12 @@ public class program4 {
         System.out.println();
         System.out.println("Can I please have your " + face + "'s");
         return face;
+    }
+
+    public static boolean hasCard(int faceValue,DeckHand deck) {
+        int count = 0;
+        count = deck.count(faceValue);
+        return (count != 0);
     }
 
     //Inserts a card when the user picks menu option 2
