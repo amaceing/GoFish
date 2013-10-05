@@ -106,13 +106,6 @@ public class program4 {
 
     //Plays Go Fish
     public static void goFish() {
-        int numBooks = 0;
-        int cardsInBook = 0;
-        int face = 0;
-        int cardCount = 0;
-        Card deletedCard = null;
-        Card randDeletedCard = null;
-        Card draw = null;
         boolean playerTurn = true;
         DeckHand stock = new DeckHand();
         fillDeck(stock);
@@ -122,42 +115,8 @@ public class program4 {
         deal(stock, compDeck);
         do {
             if (playerTurn) {
-                System.out.println("Game Status:");
-                System.out.println();
-                System.out.println("Books: " + numBooks);
-                System.out.println("Hand:");
-                System.out.println(userDeck);
-                cardsInBook = userDeck.count(face);
-                if (cardsInBook == 4) {
-                    numBooks++;
-                    System.out.println();
-                    System.out.println("You've got a book!");
-                    System.out.println("These cards will now be deleted from your hand.");
-                    System.out.println();
-                    for (int i = 0; i < cardsInBook; i++) {
-                        deletedCard = userDeck.popCard(face);
-                        System.out.println(deletedCard);
-                    }
-                }
-                System.out.println();
-                face = askCard(userDeck);
-                hasCard(face, compDeck);
-                if (hasCard(face, compDeck)) {
-                    cardCount = compDeck.count(face);
-                    for (int i = 0; i < cardCount; i++) {
-                        deletedCard = compDeck.popCard(face);
-                        userDeck.pushCard(deletedCard);
-                    }
-                } else {
-                    System.out.println();
-                    System.out.println("Go Fish!");
-                    System.out.println("You must draw a card from the deck.");
-                    draw = stock.popAny();
-                    userDeck.pushCard(draw);
-                    System.out.println();
-                    System.out.println("It is now the other player's turn!");
-                    playerTurn = false;
-                }
+                userTurn(stock, userDeck, compDeck);
+                playerTurn = false;
             } else {
                 System.out.println(compDeck);
                 playerTurn = true;
@@ -219,6 +178,51 @@ public class program4 {
             for (int j = 1; j <= 4; j++) {
                 fullDeck.pushCard(new Card(i, j));
             }
+        }
+    }
+
+    public static void userTurn(DeckHand deck, DeckHand user, DeckHand comp) {
+        int numBooks = 0;
+        int cardsInBook = 0;
+        int face = 0;
+        int faceValues = 13;
+        int cardCount = 0;
+        Card deletedCard = null;
+        Card randDeletedCard = null;
+        Card draw = null;
+        System.out.println();
+        System.out.println("Game Status:");
+        System.out.println("Books - " + numBooks);
+        System.out.println("Hand:");
+        System.out.println(user);
+        for (int i = 0; i < faceValues; i++) {
+            if (user.count(i) == 4) {
+                numBooks++;
+                System.out.println();
+                System.out.println("You've got a book!");
+                System.out.println("These cards will now be deleted from your hand.");
+                System.out.println();
+                while (user.count(i) > 0) {
+                    deletedCard = user.popCard(i);
+                    System.out.println(deletedCard);
+                }
+            }
+        }
+        face = askCard(user);
+        hasCard(face, comp);
+        if (hasCard(face, comp)) {
+            cardCount = comp.count(face);
+            for (int i = 0; i < cardCount; i++) {
+                deletedCard = comp.popCard(face);
+                user.pushCard(deletedCard);
+            }
+        } else {
+            System.out.println();
+            System.out.println("Go Fish!");
+            System.out.println("You must draw a card from the deck.");
+            draw = deck.popAny();
+            user.pushCard(draw);
+            System.out.println();
         }
     }
 
