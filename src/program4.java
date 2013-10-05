@@ -109,6 +109,8 @@ public class program4 {
         int face = 0;
         int cardCount = 0;
         Card deletedCard = null;
+        Card randDeletedCard = null;
+        Card draw = null;
         boolean playerTurn = true;
         DeckHand stock = new DeckHand();
         fillDeck(stock);
@@ -116,23 +118,36 @@ public class program4 {
         DeckHand compDeck = new DeckHand();
         deal(stock, userDeck);
         deal(stock, compDeck);
-        System.out.println(userDeck);
-        System.out.println(compDeck);
-        if (playerTurn) {
-            face = askCard(userDeck);
-            System.out.println(face);
-            hasCard(face, compDeck);
-            if (hasCard(face, compDeck)) {
-                cardCount = compDeck.count(face);
-                for (int i = 0; i < cardCount; i++) {
-                    deletedCard = compDeck.popCard(face);
-                    userDeck.pushCard(deletedCard);
-                }
-                System.out.println(compDeck);
+        do {
+            if (playerTurn) {
                 System.out.println(userDeck);
+                face = askCard(userDeck);
+                hasCard(face, compDeck);
+                if (hasCard(face, compDeck)) {
+                    cardCount = compDeck.count(face);
+                    for (int i = 0; i < cardCount; i++) {
+                        deletedCard = compDeck.popCard(face);
+                        userDeck.pushCard(deletedCard);
+                    }
+                } else {
+                    System.out.println();
+                    System.out.println("The other player does not have");
+                    System.out.println("any cards with this face value.");
+                    System.out.println("You must draw a card from the deck.");
+                    draw = stock.popAny();
+                    userDeck.pushCard(draw);
+                    System.out.println();
+                    System.out.println("It is now the other player's turn!");
+                    playerTurn = false;
+                }
+            } else {
+                System.out.println(compDeck);
+                randDeletedCard = askRandCard(compDeck);
+                playerTurn = true;
+                System.out.println();
             }
-            playerTurn = false;
-        }
+        } while (stock.getSize() != 0 && userDeck.getSize() != 0
+                 && compDeck.getSize() != 0);
     }
 
     //Prints the intro to let the user know what the program
@@ -225,6 +240,12 @@ public class program4 {
         System.out.println();
         System.out.println("Can I please have your " + face + "'s");
         return face;
+    }
+
+    public static Card askRandCard(DeckHand deck) {
+        Card deleted = deck.popAny();
+        System.out.println(deleted);
+        return deleted;
     }
 
     public static boolean hasCard(int faceValue,DeckHand deck) {
