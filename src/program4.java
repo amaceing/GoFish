@@ -471,6 +471,9 @@ class DeckHand {
         return findCard(faceValue);
     }
 
+    //Creates a random integer 1 - 13
+    //faces that integer as a face value to
+    //findCard to delete a random card
     public Card popAny() {
         int deletionVal = 0;
         deletionVal = generator.nextInt(FACE_VALUE) + 1;
@@ -486,6 +489,10 @@ class DeckHand {
         return currentDeck;
     }
 
+    //Finds the card with the given face
+    //value in the deck, returns the card,
+    //and depending on the card length does the
+    //appropriate operation to the deck
     private Card findCard(int faceValue) {
         boolean foundIt = false;
         Card found = null;
