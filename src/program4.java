@@ -189,6 +189,8 @@ public class program4 {
         }
     }
 
+    //Execute the operations required every time
+    //it's the users turn to play
     public static void userTurn(DeckHand deck, DeckHand user, DeckHand comp) {
         int face = 0;
         int cardCount = 0;
@@ -254,6 +256,8 @@ public class program4 {
         return face;
     }
 
+    //Checks to see if the user has acquired
+    //a book of cards
     public static boolean userBooks(DeckHand user) {
         int faceValues = 13;
         boolean foundBook = false;
@@ -274,7 +278,6 @@ public class program4 {
         System.out.println();
         return foundBook;
     }
-
 
     //Method that selects a random card from
     //the computer's hand *NOT FINISHED*
