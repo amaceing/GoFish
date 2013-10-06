@@ -107,7 +107,7 @@ public class program4 {
     //Plays Go Fish
     public static void goFish() {
         int numBooks = 0;
-        int faceValues = 13;
+        char cont = '0';
         boolean playerTurn = true;
         DeckHand stock = new DeckHand();
         fillDeck(stock);
@@ -119,16 +119,26 @@ public class program4 {
             if (userBooks(userDeck)) {
                 numBooks++;
             }
-            System.out.println("Game Status:");
-            System.out.println("Books - " + numBooks);
-            System.out.println("Hand:");
-            System.out.println(userDeck);
             if (playerTurn) {
-                userTurn(stock, userDeck, compDeck);
-                playerTurn = false;
+                do {
+                    System.out.println("Game Status:");
+                    System.out.println("Books - " + numBooks);
+                    System.out.println("Hand:");
+                    System.out.println(userDeck);
+                    playerTurn = userTurn(stock, userDeck, compDeck, playerTurn);
+                } while (playerTurn);
             } else {
                 System.out.println("Comp's turn");
+                System.out.println();
+                System.out.print("Enter Y to continue: ");
+                cont = console.next().charAt(0);
+                while (cont != 'Y' && cont != 'y') {
+                    System.out.println("You did not enter Y.");
+                    System.out.print("Enter Y: ");
+                    cont = console.next().charAt(0);
+                }
                 playerTurn = true;
+
             }
         } while (stock.getSize() > 0 && userDeck.getSize() > 0
                  && compDeck.getSize() > 0);
@@ -191,7 +201,8 @@ public class program4 {
 
     //Execute the operations required every time
     //it's the users turn to play
-    public static void userTurn(DeckHand deck, DeckHand user, DeckHand comp) {
+    public static boolean userTurn(DeckHand deck, DeckHand user, DeckHand comp,
+                                boolean turn) {
         int face = 0;
         int cardCount = 0;
         Card deletedCard = null;
@@ -205,6 +216,7 @@ public class program4 {
             for (int i = 0; i < cardCount; i++) {
                 deletedCard = comp.popCard(face);
                 user.pushCard(deletedCard);
+                turn = true;
             }
         } else {
             System.out.println();
@@ -213,7 +225,9 @@ public class program4 {
             draw = deck.popAny();
             user.pushCard(draw);
             System.out.println();
+            turn = false;
         }
+        return turn;
     }
 
     //Deals 7 cards to each deck
