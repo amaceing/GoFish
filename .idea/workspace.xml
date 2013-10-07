@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1740a950-d420-4757-becb-3a8c91f93616" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/program4.java" afterPath="$PROJECT_DIR$/src/program4.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Prog4.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1381164990693" ignored="false" />
+    <file path="/Dummy.txt" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1381169958659" ignored="false" />
     <file path="/program4.java" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1381169798391" ignored="false" />
     <file path="$PROJECT_DIR$/../Homework5/src/Homework5.java" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1380862826417" ignored="false" />
     <file path="/Homework5.java" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1380862823645" ignored="false" />
@@ -538,7 +537,11 @@
       <created>1381025905156</created>
       <updated>1381025905157</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="implementing continue turn, changed userBooks">
+      <created>1381169970200</created>
+      <updated>1381169970200</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -629,7 +632,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="rearranging, implementing cont. question" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementing continue turn, changed userBooks" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -643,7 +646,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="implemented newDeck" />
     <MESSAGE value="added comments to main methods" />
     <MESSAGE value="implemented switch statement in main" />
     <MESSAGE value="simplified switch in main" />
@@ -668,6 +670,7 @@
     <MESSAGE value="added comments" />
     <MESSAGE value="added more comments" />
     <MESSAGE value="rearranging, implementing cont. question" />
+    <MESSAGE value="implementing continue turn, changed userBooks" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
