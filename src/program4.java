@@ -111,21 +111,25 @@ public class program4 {
         boolean playerTurn = true;
         DeckHand stock = new DeckHand();
         fillDeck(stock);
+        System.out.println("Stock size: " + stock.getSize());
         DeckHand userDeck = new DeckHand();
         DeckHand compDeck = new DeckHand();
         deal(stock, userDeck);
         deal(stock, compDeck);
         do {
-            if (userBooks(userDeck)) {
-                numBooks++;
-            }
             if (playerTurn) {
                 do {
                     System.out.println("Game Status:");
+                    System.out.println("Stock size: " + stock.getSize());
+                    System.out.println("user size: " + userDeck.getSize());
+                    System.out.println("comp size: " + compDeck.getSize());
                     System.out.println("Books - " + numBooks);
                     System.out.println("Hand:");
                     System.out.println(userDeck);
                     playerTurn = userTurn(stock, userDeck, compDeck, playerTurn);
+                    if (userBooks(userDeck)) {
+                        numBooks++;
+                    }
                 } while (playerTurn);
             } else {
                 System.out.println("Comp's turn");
@@ -223,9 +227,19 @@ public class program4 {
             System.out.println("Go Fish!");
             System.out.println("You must draw a card from the deck.");
             draw = deck.popAny();
+            System.out.println("Card drawn is " + draw);
+            if (draw.getFaceValue() == face) {
+                System.out.println();
+                System.out.println();
+                System.out.println("The card you've drawn is what you asked!");
+                System.out.println("You get another turn!");
+                System.out.println();
+                turn = true;
+            } else {
+                System.out.println();
+                turn = false;
+            }
             user.pushCard(draw);
-            System.out.println();
-            turn = false;
         }
         return turn;
     }
