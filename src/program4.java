@@ -106,8 +106,6 @@ public class program4 {
 
     //Plays Go Fish
     public static void goFish() {
-        int userSize = 0;
-        int compSize = 0;
         int playerBooks = 0;
         int compBooks = 0;
         boolean playerTurn = true;
@@ -128,18 +126,17 @@ public class program4 {
                 System.out.println("Hand:");
                 System.out.println(userDeck);
                 playerTurn = userTurn(stock, userDeck, compDeck, playerTurn);
-                userSize = userDeck.getSize();
-            } while (playerTurn && userSize > 0);
+            } while (playerTurn);
             do {
                 if (books(compDeck)) {
                     compBooks++;
                 }
+                System.out.println("Comp \n" + compDeck);
                 playerTurn = compTurn(stock, userDeck, compDeck, playerTurn);
-                compSize = compDeck.getSize();
                 System.out.println();
-            } while(!playerTurn && compSize > 0);
-        } while(stock.getSize() > 0 && userDeck.getSize() > 0
-                && compDeck.getSize() > 0);
+            } while(!playerTurn);
+        } while((userDeck.getSize() > 0) || (compDeck.getSize() > 0) ||
+                 stock.getSize() > 0);
         if (playerBooks > compBooks) {
             System.out.println("You have won!");
         } else if (compBooks < playerBooks) {
@@ -351,7 +348,7 @@ public class program4 {
         int faceValues = 13;
         boolean foundBook = false;
         Card deletedCard = null;
-        for (int i = 0; i < faceValues; i++) {
+        for (int i = 1; i <= faceValues; i++) {
             if (deck.count(i) == 4) {
                 foundBook = true;
                 System.out.println();
