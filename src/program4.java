@@ -106,8 +106,7 @@ public class program4 {
 
     //Plays Go Fish
     public static void goFish() {
-        int numBooks = 0;
-        char cont = '0';
+        int playerBooks = 0;
         boolean playerTurn = true;
         DeckHand stock = new DeckHand();
         fillDeck(stock);
@@ -117,33 +116,20 @@ public class program4 {
         deal(stock, userDeck);
         deal(stock, compDeck);
         do {
-            if (playerTurn) {
-                do {
-                    System.out.println("Game Status:");
-                    System.out.println("Stock size: " + stock.getSize());
-                    System.out.println("user size: " + userDeck.getSize());
-                    System.out.println("comp size: " + compDeck.getSize());
-                    System.out.println("Books - " + numBooks);
-                    System.out.println("Hand:");
-                    System.out.println(userDeck);
-                    playerTurn = userTurn(stock, userDeck, compDeck, playerTurn);
-                    if (userBooks(userDeck)) {
-                        numBooks++;
-                    }
-                } while (playerTurn);
-            } else {
-                System.out.println("Comp's turn");
-                System.out.println();
-                System.out.print("Enter Y to continue: ");
-                cont = console.next().charAt(0);
-                while (cont != 'Y' && cont != 'y') {
-                    System.out.println("You did not enter Y.");
-                    System.out.print("Enter Y: ");
-                    cont = console.next().charAt(0);
+            do {
+                if (books(userDeck)) {
+                    playerBooks++;
                 }
-                playerTurn = true;
-
-            }
+                System.out.println("Game Status:");
+                System.out.println("Player books - " + playerBooks);
+                System.out.println("Hand:");
+                System.out.println(userDeck);
+                playerTurn = userTurn(stock, userDeck, compDeck, playerTurn);
+            } while (playerTurn);
+            do {
+                playerTurn = compTurn(stock, userDeck, compDeck, playerTurn);
+                System.out.println();
+            } while(!playerTurn);
         } while (stock.getSize() > 0 && userDeck.getSize() > 0
                  && compDeck.getSize() > 0);
     }
@@ -207,10 +193,10 @@ public class program4 {
     //it's the users turn to play
     public static boolean userTurn(DeckHand deck, DeckHand user, DeckHand comp,
                                 boolean turn) {
+        char cont = '0';
         int face = 0;
         int cardCount = 0;
         Card deletedCard = null;
-        Card randDeletedCard = null;
         Card draw = null;
         System.out.println();
         face = askCard(user);
@@ -220,16 +206,17 @@ public class program4 {
             for (int i = 0; i < cardCount; i++) {
                 deletedCard = comp.popCard(face);
                 user.pushCard(deletedCard);
-                turn = true;
             }
+            turn = true;
         } else {
             System.out.println();
             System.out.println("Go Fish!");
             System.out.println("You must draw a card from the deck.");
-            draw = deck.popAny();
+            do {
+                draw = deck.popAny();
+            } while(draw == null);
             System.out.println("Card drawn is " + draw);
             if (draw.getFaceValue() == face) {
-                System.out.println();
                 System.out.println();
                 System.out.println("The card you've drawn is what you asked!");
                 System.out.println("You get another turn!");
@@ -240,6 +227,58 @@ public class program4 {
                 turn = false;
             }
             user.pushCard(draw);
+        }
+        return turn;
+    }
+
+    public static boolean compTurn(DeckHand deck, DeckHand user, DeckHand comp,
+                                   boolean turn) {
+        char cont = '0';
+        Card askCard = null;
+        Card deletedCard = null;
+        Card draw = null;
+        int cardCount = 0;
+        int face = 0;
+        do {
+            askCard = comp.popAny();
+        } while(askCard == null);
+        face = askCard.getFaceValue();
+        System.out.println("The computer is asking for your " +
+                askCard.getFaceValue() + "'s");
+        System.out.println();
+        comp.pushCard(askCard);
+        if(hasCard(face, user)) {
+            cardCount = user.count(face);
+            for (int i = 0; i < cardCount; i++) {
+                deletedCard = user.popCard(face);
+                comp.pushCard(deletedCard);
+            }
+            turn = false;
+        } else {
+            System.out.println();
+            System.out.println("Go Fish!");
+            System.out.println("The computer must draw from the deck!");
+            do {
+                draw = deck.popAny();
+            } while(draw == null);
+            if (draw.getFaceValue() == face) {
+                System.out.println();
+                System.out.println("The card the computer drew is" +
+                                    " the card it asked for!");
+                System.out.println("The computer gets another turn!");
+                System.out.println();
+                turn = false;
+            } else {
+                System.out.println();
+                turn = true;
+            }
+        }
+        System.out.print("Enter Y to continue: ");
+        cont = console.next().charAt(0);
+        while (cont != 'Y' && cont != 'y') {
+            System.out.println("You did not enter Y.");
+            System.out.print("Enter Y: ");
+            cont = console.next().charAt(0);
         }
         return turn;
     }
@@ -286,19 +325,19 @@ public class program4 {
 
     //Checks to see if the user has acquired
     //a book of cards
-    public static boolean userBooks(DeckHand user) {
+    public static boolean books(DeckHand deck) {
         int faceValues = 13;
         boolean foundBook = false;
         Card deletedCard = null;
         for (int i = 0; i < faceValues; i++) {
-            if (user.count(i) == 4) {
+            if (deck.count(i) == 4) {
                 foundBook = true;
                 System.out.println();
                 System.out.println("You've got a book!");
                 System.out.println("These cards will now be deleted from your hand.");
                 System.out.println();
-                while (user.count(i) > 0) {
-                    deletedCard = user.popCard(i);
+                while (deck.count(i) > 0) {
+                    deletedCard = deck.popCard(i);
                     System.out.println(deletedCard);
                 }
             }
