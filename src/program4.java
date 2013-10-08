@@ -106,11 +106,13 @@ public class program4 {
 
     //Plays Go Fish
     public static void goFish() {
+        int userSize = 0;
+        int compSize = 0;
         int playerBooks = 0;
+        int compBooks = 0;
         boolean playerTurn = true;
         DeckHand stock = new DeckHand();
         fillDeck(stock);
-        System.out.println("Stock size: " + stock.getSize());
         DeckHand userDeck = new DeckHand();
         DeckHand compDeck = new DeckHand();
         deal(stock, userDeck);
@@ -122,16 +124,29 @@ public class program4 {
                 }
                 System.out.println("Game Status:");
                 System.out.println("Player books - " + playerBooks);
+                System.out.println("Computer books - " + compBooks);
                 System.out.println("Hand:");
                 System.out.println(userDeck);
                 playerTurn = userTurn(stock, userDeck, compDeck, playerTurn);
-            } while (playerTurn);
+                userSize = userDeck.getSize();
+            } while (playerTurn && userSize > 0);
             do {
+                if (books(compDeck)) {
+                    compBooks++;
+                }
                 playerTurn = compTurn(stock, userDeck, compDeck, playerTurn);
+                compSize = compDeck.getSize();
                 System.out.println();
-            } while(!playerTurn);
-        } while (stock.getSize() > 0 && userDeck.getSize() > 0
-                 && compDeck.getSize() > 0);
+            } while(!playerTurn && compSize > 0);
+        } while(stock.getSize() > 0 && userDeck.getSize() > 0
+                && compDeck.getSize() > 0);
+        if (playerBooks > compBooks) {
+            System.out.println("You have won!");
+        } else if (compBooks < playerBooks) {
+            System.out.println("The computer has won!");
+        } else {
+            System.out.println("It's a draw!");
+        }
     }
 
     //Prints the intro to let the user know what the program
@@ -158,6 +173,7 @@ public class program4 {
         return choice;
 
     }
+
     //Prints the deck menu, acquires menu choice,
     //returns menu choice
     public static int deckMenu() {
@@ -231,6 +247,8 @@ public class program4 {
         return turn;
     }
 
+    //Executes the required operations
+    //every time it's the computer's turn
     public static boolean compTurn(DeckHand deck, DeckHand user, DeckHand comp,
                                    boolean turn) {
         char cont = '0';
@@ -248,11 +266,14 @@ public class program4 {
         System.out.println();
         comp.pushCard(askCard);
         if(hasCard(face, user)) {
+            System.out.println("The computer gets your " +
+                                askCard.getFaceValue() + "'s");
             cardCount = user.count(face);
             for (int i = 0; i < cardCount; i++) {
                 deletedCard = user.popCard(face);
                 comp.pushCard(deletedCard);
             }
+            System.out.println();
             turn = false;
         } else {
             System.out.println();
@@ -261,6 +282,7 @@ public class program4 {
             do {
                 draw = deck.popAny();
             } while(draw == null);
+            comp.pushCard(draw);
             if (draw.getFaceValue() == face) {
                 System.out.println();
                 System.out.println("The card the computer drew is" +
@@ -333,8 +355,8 @@ public class program4 {
             if (deck.count(i) == 4) {
                 foundBook = true;
                 System.out.println();
-                System.out.println("You've got a book!");
-                System.out.println("These cards will now be deleted from your hand.");
+                System.out.println("A book has been collected!");
+                System.out.println("These cards will now be deleted from the hand.");
                 System.out.println();
                 while (deck.count(i) > 0) {
                     deletedCard = deck.popCard(i);
@@ -344,14 +366,6 @@ public class program4 {
         }
         System.out.println();
         return foundBook;
-    }
-
-    //Method that selects a random card from
-    //the computer's hand *NOT FINISHED*
-    public static Card askRandCard(DeckHand deck) {
-        Card deleted = deck.popAny();
-        System.out.println(deleted);
-        return deleted;
     }
 
     //Boolean returning method that shows whether
