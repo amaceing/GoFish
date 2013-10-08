@@ -6,8 +6,8 @@
     </list>
     <ignored path="Prog4.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1381213822830" ignored="false" />
-    <file path="/program4.java" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1381212717819" ignored="false" />
+    <file path="/Dummy.txt" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1381269371424" ignored="false" />
+    <file path="/program4.java" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1381269165104" ignored="false" />
     <file path="$PROJECT_DIR$/../Homework5/src/Homework5.java" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1380862826417" ignored="false" />
     <file path="/Homework5.java" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1380862823645" ignored="false" />
     <file path="$PROJECT_DIR$/../Homework5/.idea/misc.xml" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1380862869924" ignored="false" />
@@ -77,9 +77,9 @@
       <file leaf-file-name="program4.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/program4.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="33" selection-start="3686" selection-end="3686" vertical-scroll-proportion="13.277372">
+            <state line="223" column="0" selection-start="8045" selection-end="8045" vertical-scroll-proportion="0.109042555">
               <folding>
-                <element signature="e#0#20023#0" expanded="true" />
+                <element signature="e#0#20228#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -110,8 +110,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="54" />
     <option name="y" value="-8" />
-    <option name="width" value="1874" />
-    <option name="height" value="1096" />
+    <option name="width" value="1320" />
+    <option name="height" value="784" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -139,8 +139,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -175,6 +173,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -185,15 +185,15 @@
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Homework5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CSC110/Tuition.java" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Application.program4">
     <configuration default="false" name="program4" type="Application" factoryName="Application" temporary="true">
@@ -226,6 +226,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -251,19 +264,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -553,7 +553,11 @@
       <created>1381213832360</created>
       <updated>1381213832361</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="figuring out while conditions2">
+      <created>1381269379209</created>
+      <updated>1381269379209</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -577,10 +581,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <frame x="54" y="-8" width="1320" height="784" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.826226" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35782748" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -593,8 +597,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.104304634" sideWeight="0.17377399" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.10341151" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10413355" sideWeight="0.6421725" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.76038337" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -644,7 +648,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="figuring out while conditions" />
+    <option name="LAST_COMMIT_MESSAGE" value="figuring out while conditions2" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -658,7 +662,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="modified deleteRand" />
     <MESSAGE value="changed checkCard" />
     <MESSAGE value="took out extraneous error messages" />
     <MESSAGE value="changed the way menu is repeated" />
@@ -683,6 +686,7 @@
     <MESSAGE value="implementing compTurn" />
     <MESSAGE value="adding comments, testing" />
     <MESSAGE value="figuring out while conditions" />
+    <MESSAGE value="figuring out while conditions2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -692,15 +696,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/program4.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#20023#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Prog3/src/program3.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="62" column="6" selection-start="2421" selection-end="2579" vertical-scroll-proportion="0.0" />
@@ -720,7 +715,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#0#20023#0" expanded="true" />
+            <element signature="e#0#20228#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -739,7 +734,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#0#20023#0" expanded="true" />
+            <element signature="e#0#20228#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -758,7 +753,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#0#20023#0" expanded="true" />
+            <element signature="e#0#20228#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -783,11 +778,16 @@
         <state line="57" column="12" selection-start="2149" selection-end="2149" vertical-scroll-proportion="0.029616725" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../CSC110/Tuition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/program4.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="33" selection-start="3686" selection-end="3686" vertical-scroll-proportion="13.277372">
+        <state line="223" column="0" selection-start="8045" selection-end="8045" vertical-scroll-proportion="0.109042555">
           <folding>
-            <element signature="e#0#20023#0" expanded="true" />
+            <element signature="e#0#20228#0" expanded="true" />
           </folding>
         </state>
       </provider>
