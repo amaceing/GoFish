@@ -117,38 +117,34 @@ public class program4 {
         deal(stock, userDeck);
         deal(stock, compDeck);
         do {
-            if (userDeck.getSize() == 0 || compDeck.getSize() == 0 ||
-                stock.getSize() == 0) {
+            if (stock.getSize() == 0) {
+                System.out.println("There are no more cards left" +
+                                    " in the deck!");
                 gameOver = true;
             }
-            System.out.println("Stock - " + stock.getSize());
             if (playerTurn) {
                 if (books(userDeck)) {
                     playerBooks++;
                 }
-                if (userDeck.getSize() == 0) {
-                    gameOver = true;
-                }
-                System.out.println("Game Status:");
-                System.out.println("Player books - " + playerBooks);
-                System.out.println("Computer books - " + compBooks);
-                System.out.println("Hand:");
-                System.out.println(userDeck);
-                if (userDeck.getSize() > 0) {
+                if (userDeck.getSize() != 0) {
+                    System.out.println("Game Status:");
+                    System.out.println("Player books - " + playerBooks);
+                    System.out.println("Computer books - " + compBooks);
+                    System.out.println("Hand:");
+                    System.out.println(userDeck);
                     playerTurn = userTurn(stock, userDeck, compDeck, playerTurn);
                 } else {
+                    System.out.println("You have gotten rid of all your cards!");
                     gameOver = true;
                 }
             } else {
                 if (books(compDeck)) {
                     compBooks++;
                 }
-                if (compDeck.getSize() == 0) {
-                    gameOver = true;
-                }
-                if (compDeck.getSize() > 0) {
+                if (compDeck.getSize() != 0) {
                     playerTurn = compTurn(stock, userDeck, compDeck, playerTurn);
                 } else {
+                    System.out.println("The computer has gotten rid of all its cards!");
                     gameOver = true;
                 }
                 System.out.println();
