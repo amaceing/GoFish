@@ -121,7 +121,8 @@ public class program4 {
                 stock.getSize() == 0) {
                 gameOver = true;
             }
-            if (playerTurn && !gameOver) {
+            System.out.println("Stock - " + stock.getSize());
+            if (playerTurn) {
                 if (books(userDeck)) {
                     playerBooks++;
                 }
@@ -131,21 +132,20 @@ public class program4 {
                 System.out.println("Game Status:");
                 System.out.println("Player books - " + playerBooks);
                 System.out.println("Computer books - " + compBooks);
-                System.out.println("Hand: " + userDeck.getSize());
+                System.out.println("Hand:");
                 System.out.println(userDeck);
                 if (userDeck.getSize() > 0) {
                     playerTurn = userTurn(stock, userDeck, compDeck, playerTurn);
                 } else {
                     gameOver = true;
                 }
-            } else if (!playerTurn && !gameOver) {
+            } else {
                 if (books(compDeck)) {
                     compBooks++;
                 }
                 if (compDeck.getSize() == 0) {
                     gameOver = true;
                 }
-                System.out.println("Comp: " + compDeck.getSize());
                 if (compDeck.getSize() > 0) {
                     playerTurn = compTurn(stock, userDeck, compDeck, playerTurn);
                 } else {
@@ -154,6 +154,8 @@ public class program4 {
                 System.out.println();
             }
         } while(!gameOver);
+        System.out.println("User books - " + playerBooks);
+        System.out.println("Computer books - " + compBooks);
         if (playerBooks > compBooks) {
             System.out.println("You have won!");
         } else if (compBooks > playerBooks) {
