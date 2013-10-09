@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1740a950-d420-4757-becb-3a8c91f93616" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/program4.java" afterPath="$PROJECT_DIR$/src/program4.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="1740a950-d420-4757-becb-3a8c91f93616" name="Default" comment="" />
     <ignored path="Prog4.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1381284759631" ignored="false" />
-    <file path="/program4.java" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1381284838453" ignored="false" />
+    <file path="/Dummy.txt" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1381285916192" ignored="false" />
+    <file path="/program4.java" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1381285626920" ignored="false" />
     <file path="$PROJECT_DIR$/../Homework5/src/Homework5.java" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1380862826417" ignored="false" />
     <file path="/Homework5.java" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1380862823645" ignored="false" />
     <file path="$PROJECT_DIR$/../Homework5/.idea/misc.xml" changelist="1740a950-d420-4757-becb-3a8c91f93616" time="1380862869924" ignored="false" />
@@ -78,9 +75,9 @@
       <file leaf-file-name="program4.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/program4.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="151" column="36" selection-start="5445" selection-end="5445" vertical-scroll-proportion="0.52307695">
+            <state line="123" column="61" selection-start="4259" selection-end="4259" vertical-scroll-proportion="-1.3934426">
               <folding>
-                <element signature="e#0#20603#0" expanded="true" />
+                <element signature="e#0#20653#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -568,7 +565,11 @@
       <created>1381283294161</created>
       <updated>1381283294161</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="testing">
+      <created>1381285922406</created>
+      <updated>1381285922407</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -593,9 +594,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1320" height="784" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13057324" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.7635783" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -603,16 +604,16 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5671642" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3115016" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.044585988" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10413355" sideWeight="0.8694267" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.84664536" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10413355" sideWeight="0.23642172" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.9632588" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3115016" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -659,7 +660,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="ending game" />
+    <option name="LAST_COMMIT_MESSAGE" value="testing" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -673,7 +674,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="took out extraneous error messages" />
     <MESSAGE value="changed the way menu is repeated" />
     <MESSAGE value="implementing phase 2" />
     <MESSAGE value="created testDeck method" />
@@ -698,6 +698,7 @@
     <MESSAGE value="figuring out while conditions" />
     <MESSAGE value="figuring out while conditions2" />
     <MESSAGE value="ending game" />
+    <MESSAGE value="testing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -726,7 +727,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#0#20603#0" expanded="true" />
+            <element signature="e#0#20653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -745,7 +746,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#0#20603#0" expanded="true" />
+            <element signature="e#0#20653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -764,7 +765,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#0#20603#0" expanded="true" />
+            <element signature="e#0#20653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -796,9 +797,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/program4.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="151" column="36" selection-start="5445" selection-end="5445" vertical-scroll-proportion="0.52307695">
+        <state line="123" column="61" selection-start="4259" selection-end="4259" vertical-scroll-proportion="-1.3934426">
           <folding>
-            <element signature="e#0#20603#0" expanded="true" />
+            <element signature="e#0#20653#0" expanded="true" />
           </folding>
         </state>
       </provider>
