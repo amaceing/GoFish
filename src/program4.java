@@ -117,37 +117,44 @@ public class program4 {
         deal(stock, userDeck);
         deal(stock, compDeck);
         do {
-            if (playerTurn) {
+            if (userDeck.getSize() == 0 || compDeck.getSize() == 0 ||
+                stock.getSize() == 0) {
+                gameOver = true;
+            }
+            if (playerTurn && !gameOver) {
                 if (books(userDeck)) {
                     playerBooks++;
+                }
+                if (userDeck.getSize() == 0) {
+                    gameOver = true;
                 }
                 System.out.println("Game Status:");
                 System.out.println("Player books - " + playerBooks);
                 System.out.println("Computer books - " + compBooks);
-                System.out.println("Hand:");
+                System.out.println("Hand: " + userDeck.getSize());
                 System.out.println(userDeck);
-                playerTurn = userTurn(stock, userDeck, compDeck, playerTurn);
-                if (userDeck.getSize() == 0) {
+                if (userDeck.getSize() > 0) {
+                    playerTurn = userTurn(stock, userDeck, compDeck, playerTurn);
+                } else {
                     gameOver = true;
                 }
-            } else {
+            } else if (!playerTurn && !gameOver) {
                 if (books(compDeck)) {
                     compBooks++;
                 }
-                System.out.println("Comp \n" + compDeck);
-                playerTurn = compTurn(stock, userDeck, compDeck, playerTurn);
-                System.out.println();
                 if (compDeck.getSize() == 0) {
                     gameOver = true;
                 }
-            }
-            if (stock.getSize() == 0) {
-                gameOver = true;
+                System.out.println("Comp: " + compDeck.getSize());
+                if (compDeck.getSize() > 0) {
+                    playerTurn = compTurn(stock, userDeck, compDeck, playerTurn);
+                }
+                System.out.println();
             }
         } while(!gameOver);
         if (playerBooks > compBooks) {
             System.out.println("You have won!");
-        } else if (compBooks < playerBooks) {
+        } else if (compBooks > playerBooks) {
             System.out.println("The computer has won!");
         } else {
             System.out.println("It's a draw!");
@@ -221,7 +228,6 @@ public class program4 {
         Card draw = null;
         System.out.println();
         face = askCard(user);
-        hasCard(face, comp);
         if (hasCard(face, comp)) {
             cardCount = comp.count(face);
             for (int i = 0; i < cardCount; i++) {
