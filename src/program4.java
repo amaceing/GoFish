@@ -148,6 +148,8 @@ public class program4 {
                 System.out.println("Comp: " + compDeck.getSize());
                 if (compDeck.getSize() > 0) {
                     playerTurn = compTurn(stock, userDeck, compDeck, playerTurn);
+                } else {
+                    gameOver = true;
                 }
                 System.out.println();
             }
