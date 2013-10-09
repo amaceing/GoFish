@@ -229,6 +229,7 @@ public class program4 {
         System.out.println();
         face = askCard(user);
         if (hasCard(face, comp)) {
+            System.out.println("You get the computer's " + face + "'s");
             cardCount = comp.count(face);
             for (int i = 0; i < cardCount; i++) {
                 deletedCard = comp.popCard(face);
