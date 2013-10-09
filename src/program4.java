@@ -199,7 +199,7 @@ public class program4 {
         System.out.println("       5 - Print the size of the Deck");
         System.out.println("       6 - Print the entire Deck");
         System.out.println("       7 - Delete a random Card");
-        System.out.print("Insert menu option: ");
+        System.out.print("Enter menu option: ");
         choice = console.nextInt();
         while (choice < 1 || choice > 7) {
             System.out.print("Enter a number between 1 and 7: ");
@@ -416,6 +416,8 @@ public class program4 {
             Card deleted = deck.popCard(face);
             System.out.println();
             checkCard(deleted);
+        } else {
+            System.out.println("No card with the face value is in the deck.");
         }
     }
 
@@ -460,7 +462,9 @@ public class program4 {
     //Checks that the given card is in the deck,
     //if not, lets the user know
     public static void checkCard(Card card) {
-        if (card != null) {
+        if (card == null) {
+            System.out.println("No card was deleted.");
+        } else {
             System.out.println("The card " + card + " was deleted.");
         }
     }
@@ -584,7 +588,7 @@ class DeckHand {
 
     //Finds the card with the given face
     //value in the deck, returns the card,
-    //and depending on the card length does the
+    //and depending on the deck length does the
     //appropriate operation to the deck
     private Card findCard(int faceValue) {
         boolean foundIt = false;
