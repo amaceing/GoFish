@@ -121,33 +121,34 @@ public class program4 {
                 System.out.println("There are no more cards left" +
                                     " in the deck!");
                 gameOver = true;
-            }
-            if (playerTurn) {
-                if (books(userDeck)) {
-                    playerBooks++;
-                }
-                if (userDeck.getSize() != 0) {
-                    System.out.println("Game Status:");
-                    System.out.println("Player books - " + playerBooks);
-                    System.out.println("Computer books - " + compBooks);
-                    System.out.println("Hand:");
-                    System.out.println(userDeck);
-                    playerTurn = userTurn(stock, userDeck, compDeck, playerTurn);
-                } else {
-                    System.out.println("You have gotten rid of all your cards!");
-                    gameOver = true;
-                }
             } else {
-                if (books(compDeck)) {
-                    compBooks++;
-                }
-                if (compDeck.getSize() != 0) {
-                    playerTurn = compTurn(stock, userDeck, compDeck, playerTurn);
+                if (playerTurn) {
+                    if (books(userDeck)) {
+                        playerBooks++;
+                    }
+                    if (userDeck.getSize() != 0) {
+                        System.out.println("Game Status:");
+                        System.out.println("Player books - " + playerBooks);
+                        System.out.println("Computer books - " + compBooks);
+                        System.out.println("Hand:");
+                        System.out.println(userDeck);
+                        playerTurn = userTurn(stock, userDeck, compDeck, playerTurn);
+                    } else {
+                        System.out.println("You have gotten rid of all your cards!");
+                        gameOver = true;
+                    }
                 } else {
-                    System.out.println("The computer has gotten rid of all its cards!");
-                    gameOver = true;
+                    if (books(compDeck)) {
+                        compBooks++;
+                    }
+                    if (compDeck.getSize() != 0) {
+                        playerTurn = compTurn(stock, userDeck, compDeck, playerTurn);
+                    } else {
+                        System.out.println("The computer has gotten rid of all its cards!");
+                        gameOver = true;
+                    }
+                    System.out.println();
                 }
-                System.out.println();
             }
         } while(!gameOver);
         System.out.println("User books - " + playerBooks);
