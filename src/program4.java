@@ -320,8 +320,11 @@ public class program4 {
     //Deals 7 cards to each deck
     public static void deal(DeckHand full, DeckHand deck) {
         int numCards = 7;
+        Card dealtCard = null;
         for (int i = 0; i < numCards; i++) {
-            Card dealtCard = full.popAny();
+            do {
+                dealtCard = full.popAny();
+            } while(dealtCard == null);
             deck.pushCard(dealtCard);
         }
     }
