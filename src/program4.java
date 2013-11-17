@@ -213,7 +213,7 @@ public class program4 {
     public static void fillDeck(DeckHand fullDeck) {
         for (int i = 1; i <= 13; i++) {
             for (int j = 1; j <= 4; j++) {
-                fullDeck.pushCard(new Card(i, j));
+                fullDeck.insertCard(new Card(i, j));
             }
         }
     }
@@ -233,8 +233,8 @@ public class program4 {
             System.out.println("You get the computer's " + face + "'s");
             cardCount = comp.count(face);
             for (int i = 0; i < cardCount; i++) {
-                deletedCard = comp.popCard(face);
-                user.pushCard(deletedCard);
+                deletedCard = comp.deleteCard(face);
+                user.insertCard(deletedCard);
             }
             turn = true;
         } else {
@@ -242,7 +242,7 @@ public class program4 {
             System.out.println("Go Fish!");
             System.out.println("You must draw a card from the deck.");
             do {
-                draw = deck.popAny();
+                draw = deck.deleteAny();
             } while(draw == null);
             System.out.println("Card drawn is " + draw);
             if (draw.getFaceValue() == face) {
@@ -255,7 +255,7 @@ public class program4 {
                 System.out.println();
                 turn = false;
             }
-            user.pushCard(draw);
+            user.insertCard(draw);
         }
         return turn;
     }
@@ -271,20 +271,20 @@ public class program4 {
         int cardCount = 0;
         int face = 0;
         do {
-            askCard = comp.popAny();
+            askCard = comp.deleteAny();
         } while(askCard == null);
         face = askCard.getFaceValue();
         System.out.println("The computer is asking for your " +
                 askCard.getFaceValue() + "'s");
         System.out.println();
-        comp.pushCard(askCard);
+        comp.insertCard(askCard);
         if(hasCard(face, user)) {
             System.out.println("The computer gets your " +
                                 askCard.getFaceValue() + "'s");
             cardCount = user.count(face);
             for (int i = 0; i < cardCount; i++) {
-                deletedCard = user.popCard(face);
-                comp.pushCard(deletedCard);
+                deletedCard = user.deleteCard(face);
+                comp.insertCard(deletedCard);
             }
             System.out.println();
             turn = false;
@@ -293,9 +293,9 @@ public class program4 {
             System.out.println("Go Fish!");
             System.out.println("The computer must draw from the deck!");
             do {
-                draw = deck.popAny();
+                draw = deck.deleteAny();
             } while(draw == null);
-            comp.pushCard(draw);
+            comp.insertCard(draw);
             if (draw.getFaceValue() == face) {
                 System.out.println();
                 System.out.println("The card the computer drew is" +
@@ -324,9 +324,9 @@ public class program4 {
         Card dealtCard = null;
         for (int i = 0; i < numCards; i++) {
             do {
-                dealtCard = full.popAny();
+                dealtCard = full.deleteAny();
             } while(dealtCard == null);
-            deck.pushCard(dealtCard);
+            deck.insertCard(dealtCard);
         }
     }
 
@@ -375,7 +375,7 @@ public class program4 {
                 System.out.println("These cards will now be deleted from the hand.");
                 System.out.println();
                 while (deck.count(i) > 0) {
-                    deletedCard = deck.popCard(i);
+                    deletedCard = deck.deleteCard(i);
                     System.out.println(deletedCard);
                 }
             }
@@ -403,7 +403,7 @@ public class program4 {
         System.out.print("Card's suit value (1 - 4): ");
         suit = console.nextInt();
         Card newCard = new Card(face, suit);
-        deck.pushCard(newCard);
+        deck.insertCard(newCard);
         System.out.println();
         System.out.println("The card " + newCard + " was inserted.");
     }
@@ -417,7 +417,7 @@ public class program4 {
         face = console.nextInt();
         count = deck.count(face);
         if (count != 0) {
-            Card deleted = deck.popCard(face);
+            Card deleted = deck.deleteCard(face);
             System.out.println();
             checkCard(deleted);
         } else {
@@ -433,7 +433,7 @@ public class program4 {
         int size = 0;
         size = deck.getSize();
         if (size != 0) {
-            Card deleted = deck.popAny();
+            Card deleted = deck.deleteAny();
             checkCard(deleted);
         }
     }
@@ -541,9 +541,9 @@ class DeckHand {
     //Adds card to DeckHand and creates a larger
     //array and copies contents from old array if
     //expansion is needed
-    public void pushCard(Card card) {
+    public void insertCard(Card card) {
         if (cardCount >= deck.length) {
-            Card[] temp = new Card[deck.length + 2];
+            Card[] temp = new Card[deck.length * 2];
             for (int i = 0; i < cardCount; i++) {
                 temp[i] = deck[i];
             }
@@ -568,14 +568,14 @@ class DeckHand {
     //Returns one instance of a Card with given value
     //from DeckHand and replaces instance with Card at
     //the end of the deck
-    public Card popCard(int faceValue) {
+    public Card deleteCard(int faceValue) {
         return findCard(faceValue);
     }
 
     //Creates a random integer 1 - 13
     //faces that integer as a face value to
     //findCard to delete a random card
-    public Card popAny() {
+    public Card deleteAny() {
         int deletionVal = 0;
         deletionVal = generator.nextInt(FACE_VALUE) + 1;
         return findCard(deletionVal);
@@ -597,8 +597,8 @@ class DeckHand {
     private Card findCard(int faceValue) {
         boolean foundIt = false;
         Card found = null;
-        for (int i = 0; i < cardCount; i++) {
-            if (faceValue == deck[i].getFaceValue() && !foundIt) {
+        for (int i = 0; i < cardCount && !foundIt; i++) {
+            if (faceValue == deck[i].getFaceValue()) {
                 found = deck[i];
                 foundIt = true;
                 if (cardCount > 1) {
