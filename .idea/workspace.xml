@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1740a950-d420-4757-becb-3a8c91f93616" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/program4.java" afterPath="$PROJECT_DIR$/src/program4.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Prog4.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -87,7 +86,7 @@
       <file leaf-file-name="program4.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/program4.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="576" column="16" selection-start="19985" selection-end="19985" vertical-scroll-proportion="0.47482836">
+            <state line="290" column="0" selection-start="10890" selection-end="10890" vertical-scroll-proportion="0.33295193">
               <folding>
                 <element signature="e#0#20584#0" expanded="true" />
               </folding>
@@ -833,7 +832,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/program4.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="576" column="16" selection-start="19985" selection-end="19985" vertical-scroll-proportion="0.47482836">
+        <state line="290" column="0" selection-start="10890" selection-end="10890" vertical-scroll-proportion="0.33295193">
           <folding>
             <element signature="e#0#20584#0" expanded="true" />
           </folding>

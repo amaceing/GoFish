@@ -241,7 +241,6 @@ public class program4 {
             System.out.println();
             System.out.println("Go Fish!");
             System.out.println("You must draw a card from the deck.");
-            //CHANGED
             draw = deck.deleteAny();
             System.out.println("Card drawn is " + draw);
             if (draw.getFaceValue() == face) {
@@ -269,8 +268,7 @@ public class program4 {
         Card draw = null;
         int cardCount = 0;
         int face = 0;
-        //CHANGED
-            askCard = comp.deleteAny();
+        askCard = comp.deleteAny();
         face = askCard.getFaceValue();
         System.out.println("The computer is asking for your " +
                 askCard.getFaceValue() + "'s");
@@ -290,8 +288,7 @@ public class program4 {
             System.out.println();
             System.out.println("Go Fish!");
             System.out.println("The computer must draw from the deck!");
-            //CHANGED
-                draw = deck.deleteAny();
+            draw = deck.deleteAny();
             comp.insertCard(draw);
             if (draw.getFaceValue() == face) {
                 System.out.println();
@@ -320,8 +317,7 @@ public class program4 {
         int numCards = 7;
         Card dealtCard = null;
         for (int i = 0; i < numCards; i++) {
-            //CHANGED
-                dealtCard = full.deleteAny();
+            dealtCard = full.deleteAny();
             deck.insertCard(dealtCard);
         }
     }
