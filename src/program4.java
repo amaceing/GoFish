@@ -241,9 +241,8 @@ public class program4 {
             System.out.println();
             System.out.println("Go Fish!");
             System.out.println("You must draw a card from the deck.");
-            do {
-                draw = deck.deleteAny();
-            } while(draw == null);
+            //CHANGED
+            draw = deck.deleteAny();
             System.out.println("Card drawn is " + draw);
             if (draw.getFaceValue() == face) {
                 System.out.println();
@@ -270,9 +269,8 @@ public class program4 {
         Card draw = null;
         int cardCount = 0;
         int face = 0;
-        do {
+        //CHANGED
             askCard = comp.deleteAny();
-        } while(askCard == null);
         face = askCard.getFaceValue();
         System.out.println("The computer is asking for your " +
                 askCard.getFaceValue() + "'s");
@@ -292,9 +290,8 @@ public class program4 {
             System.out.println();
             System.out.println("Go Fish!");
             System.out.println("The computer must draw from the deck!");
-            do {
+            //CHANGED
                 draw = deck.deleteAny();
-            } while(draw == null);
             comp.insertCard(draw);
             if (draw.getFaceValue() == face) {
                 System.out.println();
@@ -323,9 +320,8 @@ public class program4 {
         int numCards = 7;
         Card dealtCard = null;
         for (int i = 0; i < numCards; i++) {
-            do {
+            //CHANGED
                 dealtCard = full.deleteAny();
-            } while(dealtCard == null);
             deck.insertCard(dealtCard);
         }
     }
@@ -412,17 +408,11 @@ public class program4 {
     //appropriate deck when user picks menu option 3
     public static void deleteCard(DeckHand deck) {
         int face = 0;
-        int count = 0;
         System.out.print("Card's face value: ");
         face = console.nextInt();
-        count = deck.count(face);
-        if (count != 0) {
-            Card deleted = deck.deleteCard(face);
-            System.out.println();
-            checkCard(deleted);
-        } else {
-            System.out.println("No card with the face value is in the deck.");
-        }
+        Card deleted = deck.deleteCard(face);
+        System.out.println();
+        checkCard(deleted);
     }
 
     //Deletes a random card from the appropriate deck
@@ -430,12 +420,8 @@ public class program4 {
     //the randomly generate face value is found in the deck
     //the method lets the user know that no card was deleted
     public static void deleteRand(DeckHand deck) {
-        int size = 0;
-        size = deck.getSize();
-        if (size != 0) {
-            Card deleted = deck.deleteAny();
-            checkCard(deleted);
-        }
+        Card deleted = deck.deleteAny();
+        checkCard(deleted);
     }
 
     //Prints the count of the given face value
@@ -569,32 +555,6 @@ class DeckHand {
     //from DeckHand and replaces instance with Card at
     //the end of the deck
     public Card deleteCard(int faceValue) {
-        return findCard(faceValue);
-    }
-
-    //Creates a random integer 1 - 13
-    //faces that integer as a face value to
-    //findCard to delete a random card
-    public Card deleteAny() {
-        int deletionVal = 0;
-        deletionVal = generator.nextInt(FACE_VALUE) + 1;
-        return findCard(deletionVal);
-    }
-
-    //Prints out entire deck
-    public String toString() {
-        String currentDeck = "";
-        for (int i = 0; i < cardCount; i++) {
-                currentDeck += deck[i] + "\n";
-        }
-        return currentDeck;
-    }
-
-    //Finds the card with the given face
-    //value in the deck, returns the card,
-    //and depending on the deck length does the
-    //appropriate operation to the deck
-    private Card findCard(int faceValue) {
         boolean foundIt = false;
         Card found = null;
         for (int i = 0; i < cardCount && !foundIt; i++) {
@@ -613,5 +573,30 @@ class DeckHand {
             cardCount--;
         }
         return found;
+    }
+
+    //Creates a random integer 1 - 13
+    //faces that integer as a face value to
+    //findCard to delete a random card
+    public Card deleteAny() {
+        int deletionVal = 0;
+        Card deletedCard = null;
+        if (getSize() > 0) {
+            deletionVal = generator.nextInt(getSize());
+            deletedCard = deck[deletionVal];
+            deck[deletionVal] = deck[cardCount -1];
+            deck[cardCount - 1] = null;
+            cardCount--;
+        }
+        return deletedCard;
+    }
+
+    //Prints out entire deck
+    public String toString() {
+        String currentDeck = "";
+        for (int i = 0; i < cardCount; i++) {
+                currentDeck += deck[i] + "\n";
+        }
+        return currentDeck;
     }
 }
