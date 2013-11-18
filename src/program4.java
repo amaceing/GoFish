@@ -123,9 +123,6 @@ public class program4 {
                 gameOver = true;
             } else {
                 if (playerTurn) {
-                    if (books(userDeck)) {
-                        playerBooks++;
-                    }
                     if (userDeck.getSize() != 0) {
                         System.out.println("Game Status:");
                         System.out.println("Player books - " + playerBooks);
@@ -138,9 +135,6 @@ public class program4 {
                         gameOver = true;
                     }
                 } else {
-                    if (books(compDeck)) {
-                        compBooks++;
-                    }
                     if (compDeck.getSize() != 0) {
                         playerTurn = compTurn(stock, userDeck, compDeck, playerTurn);
                     } else {
@@ -236,6 +230,7 @@ public class program4 {
                 deletedCard = comp.deleteCard(face);
                 user.insertCard(deletedCard);
             }
+            books(user, deletedCard);
             turn = true;
         } else {
             System.out.println();
@@ -254,6 +249,7 @@ public class program4 {
                 turn = false;
             }
             user.insertCard(draw);
+            books(user, draw);
         }
         return turn;
     }
@@ -282,6 +278,7 @@ public class program4 {
                 deletedCard = user.deleteCard(face);
                 comp.insertCard(deletedCard);
             }
+            books(comp, deletedCard);
             System.out.println();
             turn = false;
         } else {
@@ -290,6 +287,7 @@ public class program4 {
             System.out.println("The computer must draw from the deck!");
             draw = deck.deleteAny();
             comp.insertCard(draw);
+            books(comp, draw);
             if (draw.getFaceValue() == face) {
                 System.out.println();
                 System.out.println("The card the computer drew is" +
@@ -355,25 +353,22 @@ public class program4 {
 
     //Checks to see if the user has acquired
     //a book of cards
-    public static boolean books(DeckHand deck) {
-        int faceValues = 13;
-        boolean foundBook = false;
-        Card deletedCard = null;
-        for (int i = 1; i <= faceValues; i++) {
-            if (deck.count(i) == 4) {
-                foundBook = true;
-                System.out.println();
-                System.out.println("A book has been collected!");
-                System.out.println("These cards will now be deleted from the hand.");
-                System.out.println();
-                while (deck.count(i) > 0) {
-                    deletedCard = deck.deleteCard(i);
-                    System.out.println(deletedCard);
-                }
+    public static int books(DeckHand deck, Card card) {
+        int books = deck.count(card.getFaceValue());
+        int count = 4;
+        if (books == 4) {
+            System.out.println();
+            System.out.println("A book has been collected!");
+            System.out.println("These cards will now be deleted from the hand.");
+            System.out.println();
+            while (count > 0) {
+                card = deck.deleteCard(card.getFaceValue());
+                System.out.println(card);
+                count--;
             }
         }
         System.out.println();
-        return foundBook;
+        return books;
     }
 
     //Boolean returning method that shows whether
