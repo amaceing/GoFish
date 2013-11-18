@@ -355,16 +355,14 @@ public class program4 {
     //a book of cards
     public static int books(DeckHand deck, Card card) {
         int books = deck.count(card.getFaceValue());
-        int count = 4;
         if (books == 4) {
             System.out.println();
             System.out.println("A book has been collected!");
             System.out.println("These cards will now be deleted from the hand.");
             System.out.println();
-            while (count > 0) {
+            for (int i = 4; i > 0; i--) {
                 card = deck.deleteCard(card.getFaceValue());
                 System.out.println(card);
-                count--;
             }
         }
         System.out.println();
