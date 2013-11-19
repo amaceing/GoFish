@@ -122,38 +122,66 @@ public class program4 {
                                     " in the deck!");
                 gameOver = true;
             } else {
+                //Runs player turn operations
                 if (playerTurn) {
-                    if (userDeck.getSize() != 0) {
-                        System.out.println("Game Status:");
-                        System.out.println("Player books - " + playerBooks);
-                        System.out.println("Computer books - " + compBooks);
-                        System.out.println("Hand:");
-                        System.out.println(userDeck);
-                        playerTurn = userTurn(stock, userDeck, compDeck, playerTurn);
+                    if (userDeck.getSize() > 0) {
+                        printGameStatus(playerBooks, compBooks, userDeck);
+                        int face = askCard(userDeck);
+                        if (hasCard(face, compDeck)) {
+                            transferCardsToPlayer(userDeck, compDeck, face);
+                            playerBooks += books(userDeck, face);
+                            playerTurn = true;
+                        } else {
+                            playerGoFish();
+                            Card draw = stock.deleteAny();
+                            userDeck.insertCard(draw);
+                            System.out.println("Card drawn is " + draw);
+                            if (draw.getFaceValue() == face) {
+                                playerGotCardAskedFor();
+                                playerTurn = true;
+                            } else {
+                                playerTurn = false;
+                            }
+                            playerBooks += books(userDeck, draw.getFaceValue());
+                        }
                     } else {
                         System.out.println("You have gotten rid of all your cards!");
                         gameOver = true;
                     }
+                    System.out.println();
                 } else {
-                    if (compDeck.getSize() != 0) {
-                        playerTurn = compTurn(stock, userDeck, compDeck, playerTurn);
+                    //Runs computer turn operations
+                    if (compDeck.getSize() > 0) {
+                        Card askCard = compDeck.deleteAny();
+                        int face = askCard.getFaceValue();
+                        insertCardBackIntoCompHand(compDeck, askCard);
+                        if(hasCard(face, userDeck)) {
+                            transferCardsToComp(compDeck, userDeck, face);
+                            compBooks += books(compDeck, face);
+                            playerTurn = false;
+                        } else {
+                            compGoFish();
+                            Card draw = stock.deleteAny();
+                            compDeck.insertCard(draw);
+                            if (draw.getFaceValue() == face) {
+                                computerGotCardAskedFor();
+                                playerTurn = false;
+                            } else {
+                                playerTurn = true;
+                            }
+                            compBooks += books(compDeck, face);
+                        }
+                        System.out.println();
+                        continueAfterComp();
                     } else {
                         System.out.println("The computer has gotten rid of all its cards!");
                         gameOver = true;
                     }
-                    System.out.println();
                 }
+                System.out.println();
             }
         } while(!gameOver);
-        System.out.println("User books - " + playerBooks);
-        System.out.println("Computer books - " + compBooks);
-        if (playerBooks > compBooks) {
-            System.out.println("You have won!");
-        } else if (compBooks > playerBooks) {
-            System.out.println("The computer has won!");
-        } else {
-            System.out.println("It's a draw!");
-        }
+        decideWinner(playerBooks, compBooks);
     }
 
     //Prints the intro to let the user know what the program
@@ -212,47 +240,94 @@ public class program4 {
         }
     }
 
+    public static void printGameStatus(int playerBooks, int compBooks, DeckHand user) {
+        System.out.println("Game Status:");
+        System.out.println("Player books - " + playerBooks);
+        System.out.println("Computer books - " + compBooks);
+        System.out.println("Hand:");
+        System.out.println(user);
+    }
+
+    public static void decideWinner(int playerBooks, int compBooks) {
+        System.out.println("User books - " + playerBooks);
+        System.out.println("Computer books - " + compBooks);
+        if (playerBooks > compBooks) {
+            System.out.println("You have won!");
+        } else if (compBooks > playerBooks) {
+            System.out.println("The computer has won!");
+        } else {
+            System.out.println("It's a draw!");
+        }
+    }
+
+    public static void continueAfterComp() {
+        char cont = '0';
+        System.out.print("Enter Y to continue: ");
+        cont = console.next().charAt(0);
+        while (cont != 'Y' && cont != 'y') {
+            System.out.println("You did not enter Y.");
+            System.out.print("Enter Y: ");
+            cont = console.next().charAt(0);
+        }
+    }
+
+    public static void transferCardsToPlayer(DeckHand user, DeckHand comp, int faceValueOfCard) {
+        Card deletedCard = null;
+        System.out.println("You get the computer's " + faceValueOfCard + "'s");
+        int cardCount = comp.count(faceValueOfCard);
+        for (int i = 0; i < cardCount; i++) {
+            deletedCard = comp.deleteCard(faceValueOfCard);
+            user.insertCard(deletedCard);
+        }
+        System.out.println();
+    }
+
+    public static void transferCardsToComp(DeckHand comp, DeckHand user, int faceValueOfCard) {
+        Card deletedCard = null;
+        System.out.println("The computer gets your " +
+                faceValueOfCard + "'s");
+        int cardCount = user.count(faceValueOfCard);
+        for (int i = 0; i < cardCount; i++) {
+            deletedCard = user.deleteCard(faceValueOfCard);
+            comp.insertCard(deletedCard);
+        }
+    }
+
+    public static void playerGoFish() {
+        System.out.println();
+        System.out.println("Go Fish!");
+        System.out.println("You must draw a card from the deck.");
+    }
+
+    public static void compGoFish() {
+        System.out.println();
+        System.out.println("Go Fish!");
+        System.out.println("The computer must draw from the deck!");
+    }
+
+    public static void playerGotCardAskedFor() {
+        System.out.println();
+        System.out.println("The card you've drawn is what you asked!");
+        System.out.println("You get another turn!");
+    }
+
+    public static void computerGotCardAskedFor() {
+        System.out.println();
+        System.out.println("The card the computer drew is" +
+                " the card it asked for!");
+        System.out.println("The computer gets another turn!");
+        System.out.println();
+    }
+
+    public static void insertCardBackIntoCompHand(DeckHand comp, Card card) {
+        System.out.println("The computer is asking for your " +
+                card.getFaceValue() + "'s");
+        System.out.println();
+        comp.insertCard(card);
+    }
+
     //Execute the operations required every time
     //it's the users turn to play
-    public static boolean userTurn(DeckHand deck, DeckHand user, DeckHand comp,
-                                boolean turn) {
-        char cont = '0';
-        int face = 0;
-        int cardCount = 0;
-        Card deletedCard = null;
-        Card draw = null;
-        System.out.println();
-        face = askCard(user);
-        if (hasCard(face, comp)) {
-            System.out.println("You get the computer's " + face + "'s");
-            cardCount = comp.count(face);
-            for (int i = 0; i < cardCount; i++) {
-                deletedCard = comp.deleteCard(face);
-                user.insertCard(deletedCard);
-            }
-            books(user, deletedCard);
-            turn = true;
-        } else {
-            System.out.println();
-            System.out.println("Go Fish!");
-            System.out.println("You must draw a card from the deck.");
-            draw = deck.deleteAny();
-            System.out.println("Card drawn is " + draw);
-            if (draw.getFaceValue() == face) {
-                System.out.println();
-                System.out.println("The card you've drawn is what you asked!");
-                System.out.println("You get another turn!");
-                System.out.println();
-                turn = true;
-            } else {
-                System.out.println();
-                turn = false;
-            }
-            user.insertCard(draw);
-            books(user, draw);
-        }
-        return turn;
-    }
 
     //Executes the required operations
     //every time it's the computer's turn
@@ -264,49 +339,7 @@ public class program4 {
         Card draw = null;
         int cardCount = 0;
         int face = 0;
-        askCard = comp.deleteAny();
-        face = askCard.getFaceValue();
-        System.out.println("The computer is asking for your " +
-                askCard.getFaceValue() + "'s");
-        System.out.println();
-        comp.insertCard(askCard);
-        if(hasCard(face, user)) {
-            System.out.println("The computer gets your " +
-                                askCard.getFaceValue() + "'s");
-            cardCount = user.count(face);
-            for (int i = 0; i < cardCount; i++) {
-                deletedCard = user.deleteCard(face);
-                comp.insertCard(deletedCard);
-            }
-            books(comp, deletedCard);
-            System.out.println();
-            turn = false;
-        } else {
-            System.out.println();
-            System.out.println("Go Fish!");
-            System.out.println("The computer must draw from the deck!");
-            draw = deck.deleteAny();
-            comp.insertCard(draw);
-            books(comp, draw);
-            if (draw.getFaceValue() == face) {
-                System.out.println();
-                System.out.println("The card the computer drew is" +
-                                    " the card it asked for!");
-                System.out.println("The computer gets another turn!");
-                System.out.println();
-                turn = false;
-            } else {
-                System.out.println();
-                turn = true;
-            }
-        }
-        System.out.print("Enter Y to continue: ");
-        cont = console.next().charAt(0);
-        while (cont != 'Y' && cont != 'y') {
-            System.out.println("You did not enter Y.");
-            System.out.print("Enter Y: ");
-            cont = console.next().charAt(0);
-        }
+
         return turn;
     }
 
@@ -353,19 +386,21 @@ public class program4 {
 
     //Checks to see if the user has acquired
     //a book of cards
-    public static int books(DeckHand deck, Card card) {
-        int books = deck.count(card.getFaceValue());
-        if (books == 4) {
+    public static int books(DeckHand deck, int faceValue) {
+        int cardCount = deck.count(faceValue);
+        int books = 0;
+        Card deletedCard = null;
+        if (cardCount == 4) {
+            books = 1;
             System.out.println();
             System.out.println("A book has been collected!");
             System.out.println("These cards will now be deleted from the hand.");
             System.out.println();
             for (int i = 4; i > 0; i--) {
-                card = deck.deleteCard(card.getFaceValue());
-                System.out.println(card);
+                deletedCard = deck.deleteCard(faceValue);
+                System.out.println(deletedCard);
             }
         }
-        System.out.println();
         return books;
     }
 
