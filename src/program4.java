@@ -326,23 +326,6 @@ public class program4 {
         comp.insertCard(card);
     }
 
-    //Execute the operations required every time
-    //it's the users turn to play
-
-    //Executes the required operations
-    //every time it's the computer's turn
-    public static boolean compTurn(DeckHand deck, DeckHand user, DeckHand comp,
-                                   boolean turn) {
-        char cont = '0';
-        Card askCard = null;
-        Card deletedCard = null;
-        Card draw = null;
-        int cardCount = 0;
-        int face = 0;
-
-        return turn;
-    }
-
     //Deals 7 cards to each deck
     public static void deal(DeckHand full, DeckHand deck) {
         int numCards = 7;
