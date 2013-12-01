@@ -240,7 +240,8 @@ public class program4 {
         }
     }
 
-    public static void printGameStatus(int playerBooks, int compBooks, DeckHand user) {
+    public static void printGameStatus(int playerBooks, int compBooks,
+                                       DeckHand user) {
         System.out.println("Game Status:");
         System.out.println("Player books - " + playerBooks);
         System.out.println("Computer books - " + compBooks);
@@ -271,7 +272,8 @@ public class program4 {
         }
     }
 
-    public static void transferCardsToPlayer(DeckHand user, DeckHand comp, int faceValueOfCard) {
+    public static void transferCardsToPlayer(DeckHand user, DeckHand comp,
+                                             int faceValueOfCard) {
         Card deletedCard = null;
         System.out.println("You get the computer's " + faceValueOfCard + "'s");
         int cardCount = comp.count(faceValueOfCard);
@@ -282,7 +284,8 @@ public class program4 {
         System.out.println();
     }
 
-    public static void transferCardsToComp(DeckHand comp, DeckHand user, int faceValueOfCard) {
+    public static void transferCardsToComp(DeckHand comp, DeckHand user,
+                                           int faceValueOfCard) {
         Card deletedCard = null;
         System.out.println("The computer gets your " +
                 faceValueOfCard + "'s");
